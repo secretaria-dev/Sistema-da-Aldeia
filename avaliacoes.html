@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Avaliações - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =====================================
+           LINHA DE CADA AVALIAÇÃO
+        ====================================== */
+
+        .linha-avaliacao {
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr 1fr 1fr auto;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 14px;
+
+            margin: 8px 0;
+
+            background: #f8f8f8;
+
+            border: 1px solid #e5e5e5;
+
+            border-radius: 8px;
+
+        }
+
+
+        /* =====================================
+           INFORMAÇÕES
+        ====================================== */
+
+        .informacoes-avaliacao {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+
+        }
+
+
+        .informacoes-avaliacao strong {
+
+            font-size: 16px;
+
+        }
+
+
+        .informacoes-avaliacao span {
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================
+           DETALHES
+        ====================================== */
+
+        .detalhes-avaliacao {
+
+            display: contents;
+
+        }
+
+
+        .detalhes-avaliacao span {
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================
+           BOTÃO APAGAR
+        ====================================== */
+
+        .btn-apagar-avaliacao {
+
+            background: #c62828;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 6px;
+
+            padding: 8px 12px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .btn-apagar-avaliacao:hover {
+
+            background: #a91f1f;
+
+        }
+
+
+        /* =====================================
+           RESULTADO FINAL
+        ====================================== */
+
+        .resultado-final {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #f1f8e9;
+
+            border-radius: 8px;
+
+            font-size: 17px;
+
+        }
+
+
+        .resultado-final span {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================
+           RESPONSIVO
+        ====================================== */
+
+        @media (max-width: 700px) {
+
+            .linha-avaliacao {
+
+                grid-template-columns: 1fr;
+
+                gap: 8px;
+
+            }
+
+
+            .detalhes-avaliacao {
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 5px;
+
+            }
+
+
+            .btn-apagar-avaliacao {
+
+                width: 100%;
+
+            }
+
+
+            .resultado-final {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     PROTEÇÃO DE ACESSO
+========================================== -->
+
+<script>
+
+    const usuarioLogado =
+        localStorage.getItem("usuarioLogado");
+
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem("dadosUsuario")
+        );
+
+
+    /*
+     * Se não estiver logado,
+     * volta imediatamente para o login.
+     */
+
+    if (!usuarioLogado) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+
+    /*
+     * Somente ADMINISTRADOR e EDUCADOR
+     * podem acessar avaliações.
+     */
+
+    if (
+
+        dadosUsuario &&
+
+        dadosUsuario.tipo !== "administrador" &&
+
+        dadosUsuario.tipo !== "educador"
+
+    ) {
+
+        alert(
+            "⛔ Você não possui permissão para acessar esta página."
+        );
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }
+
+</script>
+
+
+
+<!-- ==========================================
+     CABEÇALHO
+========================================== -->
+
+<header>
+
+    <h1>
+        Sistema Aldeia
+    </h1>
+
+    <p>
+        Avaliações dos Alunos
+    </p>
+
+</header>
+
+
+
+<!-- ==========================================
+     CONTEÚDO
+========================================== -->
+
+<main class="container">
+
+
+    <h2>
+        Avaliações
+    </h2>
+
+
+
+    <!-- =====================================
+         MENU
+    ====================================== -->
+
+    <div class="menu">
+
+
+        <!-- ==================================
+             NOVA AVALIAÇÃO
+             ADMIN + EDUCADOR
+        =================================== -->
+
+        <button
+            type="button"
+            onclick="window.location.href='nova-avaliacao.html'"
+        >
+
+            ➕ Nova Avaliação
+
+        </button>
+
+
+
+        <!-- ==================================
+             CONFIGURAR PERÍODOS
+             SOMENTE ADMINISTRADOR
+        =================================== -->
+
+        <button
+    type="button"
+    id="btnPeriodo"
+    onclick="window.location.href='periodo.html'"
+>
+    ⚙️ Configurar Períodos
+</button>
+
+
+
+        <!-- ==================================
+             VOLTAR
+             ADMIN + EDUCADOR
+        =================================== -->
+
+        <button
+            type="button"
+            onclick="window.location.href='index.html'"
+        >
+
+            🔙 Voltar ao Menu
+
+        </button>
+
+
+    </div>
+
+
+    <br>
+
+
+
+    <!-- =====================================
+         FILTROS / HISTÓRICO
+    ====================================== -->
+
+    <div class="card">
+
+
+        <h3>
+            🔎 Pesquisar Avaliações
+        </h3>
+
+
+        <label for="grupoFiltro">
+
+            Grupo
+
+        </label>
+
+
+        <select id="grupoFiltro">
+
+            <option value="">
+
+                Selecione um grupo
+
+            </option>
+
+        </select>
+
+
+
+        <label for="oficinaFiltro">
+
+            Oficina
+
+        </label>
+
+
+        <select id="oficinaFiltro">
+
+            <option value="">
+
+                Selecione uma oficina
+
+            </option>
+
+        </select>
+
+
+
+        <label for="pesquisaAluno">
+
+            Aluno
+
+        </label>
+
+
+        <input
+            type="text"
+            id="pesquisaAluno"
+            placeholder="Digite o nome do aluno..."
+        >
+
+
+    </div>
+
+
+    <br>
+
+
+
+    <!-- =====================================
+         LISTA DE ALUNOS
+    ====================================== -->
+
+    <h2>
+
+        👨‍🎓 Alunos
+
+    </h2>
+
+
+    <div id="listaAlunosAvaliacao">
+
+
+        <div class="card">
+
+
+            <h3>
+
+                Selecione um grupo e uma oficina
+
+            </h3>
+
+
+            <p>
+
+                Os alunos aparecerão aqui.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT PRINCIPAL
+========================================== -->
+
+<script src="avaliacoes.js"></script>
+
+
+
+<!-- ==========================================
+     CONTROLE DE PERMISSÕES
+========================================== -->
+
+<script>
+
+
+    // ==========================================
+    // PEGAR BOTÃO DE PERÍODOS
+    // ==========================================
+
+    const btnConfigurarPeriodos =
+        document.getElementById(
+            "btnConfigurarPeriodos"
+        );
+
+
+
+    // ==========================================
+    // VERIFICAR TIPO DO USUÁRIO
+    // ==========================================
+
+    if (
+
+        dadosUsuario &&
+
+        dadosUsuario.tipo === "educador"
+
+    ) {
+
+
+        /*
+         * EDUCADOR
+         *
+         * Não pode configurar períodos.
+         */
+
+        if (btnConfigurarPeriodos) {
+
+            btnConfigurarPeriodos.style.display =
+                "none";
+
+        }
+
+    }
+
+
+
+    // ==========================================
+    // ADMINISTRADOR
+    // ==========================================
+
+    if (
+
+        dadosUsuario &&
+
+        dadosUsuario.tipo === "administrador"
+
+    ) {
+
+
+        /*
+         * ADMINISTRADOR
+         *
+         * Pode configurar períodos.
+         */
+
+        if (btnConfigurarPeriodos) {
+
+            btnConfigurarPeriodos.style.display =
+                "";
+
+        }
+
+    }
+
+
+
+</script>
+
+
+</body>
+<script>
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem(
+                "dadosUsuario"
+            )
+        );
+
+    const btnPeriodo =
+        document.getElementById(
+            "btnPeriodo"
+        );
+
+    if (
+        dadosUsuario &&
+        dadosUsuario.tipo ===
+        "educador"
+    ) {
+
+        if (btnPeriodo) {
+
+            btnPeriodo.style.display =
+                "none";
+
+        }
+
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Novo Aluno - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Cadastro de Aluno
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <h2>
+            Novo Aluno
+        </h2>
+
+
+        <form id="formAluno">
+
+
+            <label for="grupo">
+                Grupo
+            </label>
+
+            <select
+                id="grupo"
+                required
+            >
+
+                <option value="">
+                    Selecione um grupo
+                </option>
+
+            </select>
+
+
+            <label for="dataInscricao">
+                Data de inscrição
+            </label>
+
+            <input
+                type="date"
+                id="dataInscricao"
+                required
+            >
+
+
+            <label for="nome">
+                Nome completo
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite o nome completo"
+                required
+            >
+
+
+            <label for="genero">
+                Gênero
+            </label>
+
+            <select id="genero">
+
+                <option value="">
+                    Selecione
+                </option>
+
+                <option value="Feminino">
+                    Feminino
+                </option>
+
+                <option value="Masculino">
+                    Masculino
+                </option>
+
+                <option value="Outro">
+                    Outro
+                </option>
+
+                <option value="Prefiro não informar">
+                    Prefiro não informar
+                </option>
+
+            </select>
+
+
+            <label for="idade">
+                Idade
+            </label>
+
+            <input
+                type="number"
+                id="idade"
+                placeholder="Ex.: 24"
+            >
+
+
+            <label for="rg">
+                RG
+            </label>
+
+            <input
+                type="text"
+                id="rg"
+                placeholder="Digite o RG"
+            >
+
+
+            <label for="cpf">
+                CPF
+            </label>
+
+            <input
+                type="text"
+                id="cpf"
+                placeholder="Digite o CPF"
+            >
+
+
+            <label for="telefone">
+                Telefone / WhatsApp
+            </label>
+
+            <input
+                type="text"
+                id="telefone"
+                placeholder="Digite o telefone"
+            >
+
+
+            <br>
+            <br>
+
+
+            <button type="submit">
+                💾 Salvar Aluno
+            </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='alunos.html'"
+            >
+                🔙 Voltar
+            </button>
+
+
+        </form>
+
+
+    </main>
+
+
+    <script src="novo-aluno.js"></script>
+
+
+</body>
+
+</html>

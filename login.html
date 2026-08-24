@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Aldeia do Futuro</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="pagina-login">
+
+
+    <!-- ==========================================
+         PROTEÇÃO
+         ========================================== -->
+
+    <script>
+
+        const usuarioJaLogado =
+            localStorage.getItem("usuarioLogado");
+
+        if (usuarioJaLogado) {
+
+            window.location.replace(
+                "index.html"
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ==========================================
+         LOGIN
+         ========================================== -->
+
+    <main class="login-container">
+
+
+        <section class="login-card">
+
+
+            <!-- ======================================
+                 LOGO
+                 ====================================== -->
+
+            <div class="login-logo">
+
+                <img
+                    src="img/logo-adf-fundo-preto.png"
+                    alt="Aldeia do Futuro"
+                >
+
+            </div>
+
+
+            <!-- ======================================
+                 TÍTULO
+                 ====================================== -->
+
+            <div class="login-titulo">
+
+                <span>
+                    SISTEMA
+                </span>
+
+                <h1>
+                    Aldeia do Futuro
+                </h1>
+
+                <p>
+                    Indicadores de Transformação
+                </p>
+
+            </div>
+
+
+            <!-- ======================================
+                 FORMULÁRIO DE LOGIN
+                 ====================================== -->
+
+            <form
+                id="formLogin"
+                class="form-login"
+            >
+
+
+                <!-- ==================================
+                     USUÁRIO
+                     ================================== -->
+
+                <div class="campo-login">
+
+                    <label for="usuario">
+                        Usuário
+                    </label>
+
+                    <div class="input-login">
+
+                        <span>
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="usuario"
+                            name="usuario"
+                            placeholder="Digite seu e-mail"
+                            autocomplete="username"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     SENHA
+                     ================================== -->
+
+                <div class="campo-login">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <div class="input-login">
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="mostrarSenha"
+                            class="btn-mostrar-senha"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================
+                     MENSAGEM
+                     ================================== -->
+
+                <div
+                    id="mensagemLogin"
+                    class="mensagem-login"
+                ></div>
+
+
+                <!-- ==================================
+                     BOTÃO ENTRAR
+                     ================================== -->
+
+                <button
+                    type="submit"
+                    class="btn-login"
+                >
+
+                    <span>
+                        Entrar no sistema
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+
+            </form>
+
+
+            <!-- ======================================
+                 FORMULÁRIO PRIMEIRO ACESSO
+                 ====================================== -->
+
+            <div
+                id="areaNovaSenha"
+                style="display: none;"
+            >
+
+
+                <div
+                    style="
+                        margin-bottom: 25px;
+                        text-align: center;
+                    "
+                >
+
+                    <div
+                        style="
+                            font-size: 48px;
+                            margin-bottom: 10px;
+                        "
+                    >
+                        🔐
+                    </div>
+
+                    <h2>
+                        Primeiro acesso
+                    </h2>
+
+                    <p>
+                        Olá,
+                        <strong id="nomePrimeiroAcesso">
+                        </strong>
+                    </p>
+
+                    <p>
+                        Por segurança, crie uma nova senha
+                        para continuar.
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="formNovaSenha"
+                    class="form-login"
+                >
+
+
+                    <!-- ==================================
+                         NOVA SENHA
+                         ================================== -->
+
+                    <div class="campo-login">
+
+                        <label for="novaSenha">
+                            Nova senha
+                        </label>
+
+                        <div class="input-login">
+
+                            <span>
+                                🔑
+                            </span>
+
+                            <input
+                                type="password"
+                                id="novaSenha"
+                                placeholder="Digite sua nova senha"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================
+                         CONFIRMAR SENHA
+                         ================================== -->
+
+                    <div class="campo-login">
+
+                        <label for="confirmarSenha">
+                            Confirmar nova senha
+                        </label>
+
+                        <div class="input-login">
+
+                            <span>
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="confirmarSenha"
+                                placeholder="Digite novamente sua senha"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ==================================
+                         REGRAS
+                         ================================== -->
+
+                    <div
+                        style="
+                            margin: 15px 0;
+                            padding: 15px;
+                            border-radius: 12px;
+                            background: rgba(255,255,255,0.05);
+                            font-size: 14px;
+                        "
+                    >
+
+                        <strong>
+                            Sua senha deve:
+                        </strong>
+
+                        <br><br>
+
+                        • Ter pelo menos 6 caracteres<br>
+                        • Ser fácil para você lembrar<br>
+                        • Não ser compartilhada com outras pessoas
+
+                    </div>
+
+
+                    <!-- ==================================
+                         MENSAGEM
+                         ================================== -->
+
+                    <div
+                        id="mensagemNovaSenha"
+                        class="mensagem-login"
+                    ></div>
+
+
+                    <!-- ==================================
+                         BOTÃO SALVAR
+                         ================================== -->
+
+                    <button
+                        type="submit"
+                        class="btn-login"
+                    >
+
+                        <span>
+                            🔐 Criar minha senha
+                        </span>
+
+                        <strong>
+                            →
+                        </strong>
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+            <!-- ======================================
+                 RODAPÉ
+                 ====================================== -->
+
+            <div class="login-footer">
+
+                <span>
+                    Sistema Aldeia do Futuro
+                </span>
+
+                <span>
+                    Indicadores de Transformação
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script>
+
+
+        // ==========================================
+        // ELEMENTOS DO LOGIN
+        // ==========================================
+
+        const formLogin =
+            document.getElementById(
+                "formLogin"
+            );
+
+
+        const usuario =
+            document.getElementById(
+                "usuario"
+            );
+
+
+        const senha =
+            document.getElementById(
+                "senha"
+            );
+
+
+        const mensagemLogin =
+            document.getElementById(
+                "mensagemLogin"
+            );
+
+
+        const mostrarSenha =
+            document.getElementById(
+                "mostrarSenha"
+            );
+
+
+        // ==========================================
+        // ELEMENTOS PRIMEIRO ACESSO
+        // ==========================================
+
+        const areaNovaSenha =
+            document.getElementById(
+                "areaNovaSenha"
+            );
+
+
+        const formNovaSenha =
+            document.getElementById(
+                "formNovaSenha"
+            );
+
+
+        const novaSenha =
+            document.getElementById(
+                "novaSenha"
+            );
+
+
+        const confirmarSenha =
+            document.getElementById(
+                "confirmarSenha"
+            );
+
+
+        const mensagemNovaSenha =
+            document.getElementById(
+                "mensagemNovaSenha"
+            );
+
+
+        const nomePrimeiroAcesso =
+            document.getElementById(
+                "nomePrimeiroAcesso"
+            );
+
+
+
+        // ==========================================
+        // VARIÁVEL DO PROFESSOR
+        // ==========================================
+
+        let professorPrimeiroAcesso =
+            null;
+
+
+
+        // ==========================================
+        // MOSTRAR / OCULTAR SENHA
+        // ==========================================
+
+        if (mostrarSenha) {
+
+            mostrarSenha.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        senha.type ===
+                        "password"
+                    ) {
+
+                        senha.type =
+                            "text";
+
+                        mostrarSenha.textContent =
+                            "🙈";
+
+                    }
+
+                    else {
+
+                        senha.type =
+                            "password";
+
+                        mostrarSenha.textContent =
+                            "👁️";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        // ==========================================
+        // LOGIN
+        // ==========================================
+
+        if (formLogin) {
+
+            formLogin.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    // ==================================
+                    // PEGAR DADOS
+                    // ==================================
+
+                    const usuarioDigitado =
+                        usuario.value
+                            .trim()
+                            .toLowerCase();
+
+
+                    const senhaDigitada =
+                        senha.value;
+
+
+
+                    // ==================================
+                    // LIMPAR MENSAGEM
+                    // ==================================
+
+                    mensagemLogin.textContent =
+                        "";
+
+
+
+                    // ==================================
+                    // ADMINISTRADOR PRINCIPAL
+                    // ==================================
+
+                    if (
+
+                        usuarioDigitado ===
+                        "admin"
+
+                        &&
+
+                        senhaDigitada ===
+                        "Aldeia2026@"
+
+                    ) {
+
+
+                        const dadosAdmin = {
+
+                            usuario:
+                                "admin",
+
+                            nome:
+                                "Administrador",
+
+                            email:
+                                "",
+
+                            telefone:
+                                "",
+
+                            tipo:
+                                "administrador",
+
+                            nivel:
+                                "total",
+
+                            status:
+                                "Ativo"
+
+                        };
+
+
+                        entrarNoSistema(
+                            dadosAdmin
+                        );
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // CARREGAR PROFESSORES
+                    // ==================================
+
+                    const professoresSalvos =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "professores"
+                            )
+                        ) || [];
+
+
+
+                    // ==================================
+                    // PROCURAR PELO E-MAIL
+                    // ==================================
+
+                    const professorEncontrado =
+                        professoresSalvos.find(
+                            function (professor) {
+
+                                const loginProfessor =
+                                    (
+                                        professor.email ||
+                                        professor.usuario ||
+                                        ""
+                                    )
+                                    .trim()
+                                    .toLowerCase();
+
+
+                                return (
+                                    loginProfessor ===
+                                    usuarioDigitado
+                                );
+
+                            }
+                        );
+
+
+
+                    // ==================================
+                    // PROFESSOR NÃO ENCONTRADO
+                    // ==================================
+
+                    if (!professorEncontrado) {
+
+                        mensagemLogin.className =
+                            "mensagem-login erro";
+
+
+                        mensagemLogin.textContent =
+                            "❌ E-mail ou senha incorretos.";
+
+
+                        senha.value =
+                            "";
+
+
+                        senha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // VERIFICAR STATUS
+                    // ==================================
+
+                    if (
+                        professorEncontrado.status !==
+                        "Ativo"
+                    ) {
+
+                        mensagemLogin.className =
+                            "mensagem-login erro";
+
+
+                        mensagemLogin.textContent =
+                            "⚠️ Este usuário está inativo. Procure o administrador.";
+
+
+                        senha.value =
+                            "";
+
+
+                        senha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // VERIFICAR SENHA
+                    // ==================================
+
+                    if (
+                        professorEncontrado.senha !==
+                        senhaDigitada
+                    ) {
+
+                        mensagemLogin.className =
+                            "mensagem-login erro";
+
+
+                        mensagemLogin.textContent =
+                            "❌ E-mail ou senha incorretos.";
+
+
+                        senha.value =
+                            "";
+
+
+                        senha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // PRIMEIRO ACESSO
+                    // ==================================
+
+                    if (
+                        professorEncontrado.primeiroAcesso ===
+                        true
+                    ) {
+
+
+                        professorPrimeiroAcesso =
+                            professorEncontrado;
+
+
+                        // Mostrar nome
+                        nomePrimeiroAcesso.textContent =
+                            professorEncontrado.nome;
+
+
+                        // Esconder login
+                        formLogin.style.display =
+                            "none";
+
+
+                        // Mostrar criação de senha
+                        areaNovaSenha.style.display =
+                            "block";
+
+
+                        // Limpar senha
+                        senha.value =
+                            "";
+
+
+                        novaSenha.value =
+                            "";
+
+
+                        confirmarSenha.value =
+                            "";
+
+
+                        // Foco na nova senha
+                        setTimeout(
+                            function () {
+
+                                novaSenha.focus();
+
+                            },
+                            100
+                        );
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // LOGIN NORMAL
+                    // ==================================
+
+                    let nivelAcesso;
+
+
+                    if (
+                        professorEncontrado.tipo ===
+                        "administrador"
+                    ) {
+
+                        nivelAcesso =
+                            "total";
+
+                    }
+
+                    else {
+
+                        nivelAcesso =
+                            "avaliacoes";
+
+                    }
+
+
+
+                    const dadosUsuario = {
+
+                        usuario:
+                            professorEncontrado.usuario ||
+                            professorEncontrado.email,
+
+                        nome:
+                            professorEncontrado.nome,
+
+                        email:
+                            professorEncontrado.email ||
+                            "",
+
+                        telefone:
+                            professorEncontrado.telefone ||
+                            "",
+
+                        tipo:
+                            professorEncontrado.tipo,
+
+                        nivel:
+                            nivelAcesso,
+
+                        status:
+                            professorEncontrado.status
+
+                    };
+
+
+                    entrarNoSistema(
+                        dadosUsuario
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // ==========================================
+        // CRIAR NOVA SENHA
+        // ==========================================
+
+        if (formNovaSenha) {
+
+            formNovaSenha.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+                    // ==================================
+                    // VERIFICAR PROFESSOR
+                    // ==================================
+
+                    if (
+                        !professorPrimeiroAcesso
+                    ) {
+
+                        mensagemNovaSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemNovaSenha.textContent =
+                            "❌ Não foi possível identificar o usuário.";
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // PEGAR SENHAS
+                    // ==================================
+
+                    const senha1 =
+                        novaSenha.value;
+
+
+                    const senha2 =
+                        confirmarSenha.value;
+
+
+
+                    // ==================================
+                    // TAMANHO MÍNIMO
+                    // ==================================
+
+                    if (
+                        senha1.length < 6
+                    ) {
+
+                        mensagemNovaSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemNovaSenha.textContent =
+                            "⚠️ A nova senha precisa ter pelo menos 6 caracteres.";
+
+
+                        novaSenha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // CONFIRMAR SENHAS
+                    // ==================================
+
+                    if (
+                        senha1 !==
+                        senha2
+                    ) {
+
+                        mensagemNovaSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemNovaSenha.textContent =
+                            "❌ As senhas não são iguais.";
+
+
+                        confirmarSenha.value =
+                            "";
+
+
+                        confirmarSenha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // NÃO PERMITIR MESMA SENHA
+                    // ==================================
+
+                    if (
+                        senha1 ===
+                        "Aldeia@2026"
+                    ) {
+
+                        mensagemNovaSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemNovaSenha.textContent =
+                            "⚠️ Escolha uma senha diferente da senha inicial.";
+
+
+                        novaSenha.value =
+                            "";
+
+
+                        confirmarSenha.value =
+                            "";
+
+
+                        novaSenha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // CARREGAR PROFESSORES
+                    // ==================================
+
+                    let professores =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "professores"
+                            )
+                        ) || [];
+
+
+
+                    // ==================================
+                    // LOCALIZAR PROFESSOR
+                    // ==================================
+
+                    const indiceProfessor =
+                        professores.findIndex(
+                            function (professor) {
+
+                                return (
+                                    professor.id ===
+                                    professorPrimeiroAcesso.id
+                                );
+
+                            }
+                        );
+
+
+
+                    // ==================================
+                    // PROFESSOR NÃO ENCONTRADO
+                    // ==================================
+
+                    if (
+                        indiceProfessor ===
+                        -1
+                    ) {
+
+                        mensagemNovaSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemNovaSenha.textContent =
+                            "❌ Não foi possível atualizar o cadastro.";
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // ATUALIZAR SENHA
+                    // ==================================
+
+                    professores[
+                        indiceProfessor
+                    ].senha =
+                        senha1;
+
+
+                    professores[
+                        indiceProfessor
+                    ].primeiroAcesso =
+                        false;
+
+
+
+                    // ==================================
+                    // SALVAR PROFESSOR
+                    // ==================================
+
+                    localStorage.setItem(
+
+                        "professores",
+
+                        JSON.stringify(
+                            professores
+                        )
+
+                    );
+
+
+
+                    // ==================================
+                    // DEFINIR NÍVEL
+                    // ==================================
+
+                    let nivelAcesso;
+
+
+                    if (
+                        professorPrimeiroAcesso.tipo ===
+                        "administrador"
+                    ) {
+
+                        nivelAcesso =
+                            "total";
+
+                    }
+
+                    else {
+
+                        nivelAcesso =
+                            "avaliacoes";
+
+                    }
+
+
+
+                    // ==================================
+                    // DADOS DO USUÁRIO
+                    // ==================================
+
+                    const dadosUsuario = {
+
+                        usuario:
+                            professorPrimeiroAcesso.usuario ||
+                            professorPrimeiroAcesso.email,
+
+                        nome:
+                            professorPrimeiroAcesso.nome,
+
+                        email:
+                            professorPrimeiroAcesso.email ||
+                            "",
+
+                        telefone:
+                            professorPrimeiroAcesso.telefone ||
+                            "",
+
+                        tipo:
+                            professorPrimeiroAcesso.tipo,
+
+                        nivel:
+                            nivelAcesso,
+
+                        status:
+                            professorPrimeiroAcesso.status
+
+                    };
+
+
+
+                    // ==================================
+                    // MENSAGEM DE SUCESSO
+                    // ==================================
+
+                    mensagemNovaSenha.className =
+                        "mensagem-login sucesso";
+
+
+                    mensagemNovaSenha.textContent =
+                        "✅ Senha criada com sucesso! Entrando no sistema...";
+
+
+
+                    // ==================================
+                    // DESABILITAR BOTÃO
+                    // ==================================
+
+                    const botaoNovaSenha =
+                        formNovaSenha.querySelector(
+                            ".btn-login"
+                        );
+
+
+                    if (botaoNovaSenha) {
+
+                        botaoNovaSenha.disabled =
+                            true;
+
+                    }
+
+
+
+                    // ==================================
+                    // ENTRAR
+                    // ==================================
+
+                    setTimeout(
+                        function () {
+
+                            entrarNoSistema(
+                                dadosUsuario
+                            );
+
+                        },
+                        800
+                    );
+
+                }
+            );
+
+        }
+
+
+
+        // ==========================================
+        // FUNÇÃO ENTRAR NO SISTEMA
+        // ==========================================
+
+        function entrarNoSistema(
+            dadosUsuario
+        ) {
+
+
+            // ==================================
+            // SALVAR USUÁRIO LOGADO
+            // ==================================
+
+            localStorage.setItem(
+
+                "usuarioLogado",
+
+                dadosUsuario.usuario
+
+            );
+
+
+            // ==================================
+            // SALVAR DADOS COMPLETOS
+            // ==================================
+
+            localStorage.setItem(
+
+                "dadosUsuario",
+
+                JSON.stringify(
+                    dadosUsuario
+                )
+
+            );
+
+
+            // ==================================
+            // MENSAGEM
+            // ==================================
+
+            if (mensagemLogin) {
+
+                mensagemLogin.className =
+                    "mensagem-login sucesso";
+
+
+                mensagemLogin.textContent =
+                    "✅ Login realizado! Entrando no sistema...";
+
+            }
+
+
+
+            // ==================================
+            // DESABILITAR BOTÃO
+            // ==================================
+
+            const botaoLogin =
+                formLogin
+                    ? formLogin.querySelector(
+                        ".btn-login"
+                    )
+                    : null;
+
+
+            if (botaoLogin) {
+
+                botaoLogin.disabled =
+                    true;
+
+            }
+
+
+
+            // ==================================
+            // ENTRAR NO SISTEMA
+            // ==================================
+
+            setTimeout(
+                function () {
+
+                    window.location.replace(
+                        "index.html"
+                    );
+
+                },
+                800
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html> 

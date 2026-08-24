@@ -1,0 +1,3118 @@
+/* ==========================================
+   SISTEMA ALDEIA DO FUTURO
+   TEMA ESCURO MULTICOLORIDO
+   ========================================== */
+
+
+/* ==========================================
+   RESET
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   VARIÁVEIS
+   ========================================== */
+
+:root {
+
+    --verde: #43a047;
+    --verde-claro: #66bb6a;
+    --verde-escuro: #1b5e20;
+
+    --azul: #42a5f5;
+    --azul-claro: #64b5f6;
+
+    --rosa: #ec407a;
+    --rosa-claro: #f06292;
+
+    --roxo: #ab47bc;
+    --roxo-claro: #ce93d8;
+
+    --laranja: #fb8c00;
+    --laranja-claro: #ffb74d;
+
+    --turquesa: #26a69a;
+    --turquesa-claro: #4db6ac;
+
+    --fundo: #090d0b;
+    --fundo-2: #0d1210;
+
+    --card: #151a18;
+    --card-2: #181f1c;
+    --card-hover: #1d2521;
+
+    --texto: #f4f7f5;
+    --texto-suave: #aab5af;
+    --texto-fraco: #77827c;
+
+    --borda: #28322d;
+
+    --sombra:
+        0 12px 35px rgba(0, 0, 0, 0.35);
+
+    --sombra-hover:
+        0 20px 45px rgba(0, 0, 0, 0.55);
+}
+
+
+/* ==========================================
+   BODY
+   ========================================== */
+
+body {
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 5% 5%,
+            rgba(67, 160, 71, 0.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 95% 15%,
+            rgba(66, 165, 245, 0.06),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(236, 64, 122, 0.04),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #080c0a 0%,
+            #0c110f 50%,
+            #090d0b 100%
+        );
+
+    color:
+        var(--texto);
+
+    min-height:
+        100vh;
+}
+
+
+/* ==========================================
+   CABEÇALHO
+   ========================================== */
+
+.topo {
+
+    width: 100%;
+
+    min-height: 190px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(38, 166, 154, 0.18),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #062d1d 0%,
+            #005331 45%,
+            #00634b 75%,
+            #07505a 100%
+        );
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.45);
+}
+
+
+.topo::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+
+    height: 520px;
+
+    border-radius: 50%;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(66, 165, 245, 0.12),
+            transparent 65%
+        );
+
+    pointer-events:
+        none;
+}
+
+
+.topo::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 700px;
+
+    max-width: 90%;
+
+    height: 2px;
+
+    left: 50%;
+
+    bottom: 0;
+
+    transform:
+        translateX(-50%);
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            #43a047,
+            #42a5f5,
+            #ab47bc,
+            #ec407a,
+            transparent
+        );
+
+    opacity:
+        0.8;
+}
+
+
+/* ==========================================
+   CONTEÚDO DO CABEÇALHO
+   ========================================== */
+
+.topo-conteudo {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   MARCA
+   ========================================== */
+
+.marca {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ==========================================
+   LOGO GRANDE
+   ========================================== */
+
+.logo-area {
+
+    width: 300px;
+
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        transparent;
+
+    border:
+        none;
+
+    border-radius:
+        0;
+
+    padding:
+        0;
+
+    margin:
+        0;
+
+    box-shadow:
+        none;
+
+    overflow:
+        visible;
+}
+
+
+.logo {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit:
+        contain;
+
+    display:
+        block;
+
+    filter:
+        drop-shadow(
+            0 8px 18px rgba(0, 0, 0, 0.45)
+        );
+
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+
+.logo:hover {
+
+    transform:
+        scale(1.05);
+
+    filter:
+        drop-shadow(
+            0 10px 25px rgba(0, 0, 0, 0.55)
+        );
+}
+
+
+/* ==========================================
+   CONTAINER
+   ========================================== */
+
+.container {
+
+    width:
+        92%;
+
+    max-width:
+        1200px;
+
+    margin:
+        38px auto 50px;
+}
+
+
+/* ==========================================
+   BOAS-VINDAS
+   ========================================== */
+
+.boas-vindas {
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+
+    min-height:
+        340px;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(67, 160, 71, 0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(66, 165, 245, 0.16),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 70% 90%,
+            rgba(236, 64, 122, 0.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 35% 90%,
+            rgba(171, 71, 188, 0.10),
+            transparent 28%
+        ),
+
+        linear-gradient(
+            135deg,
+            #121815,
+            #151b19 45%,
+            #111716
+        );
+
+    border-radius:
+        30px;
+
+    padding:
+        45px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border:
+        1px solid #2b3630;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.48);
+}
+
+
+.boas-vindas::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        430px;
+
+    height:
+        430px;
+
+    border-radius:
+        50%;
+
+    left:
+        -220px;
+
+    top:
+        -230px;
+
+    border:
+        1px solid rgba(67, 160, 71, 0.18);
+
+    box-shadow:
+
+        0 0 0 35px rgba(67, 160, 71, 0.025),
+
+        0 0 0 70px rgba(66, 165, 245, 0.018);
+
+    pointer-events:
+        none;
+}
+
+
+.boas-vindas::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        450px;
+
+    height:
+        450px;
+
+    border-radius:
+        50%;
+
+    right:
+        -230px;
+
+    bottom:
+        -250px;
+
+    border:
+        1px solid rgba(236, 64, 122, 0.14);
+
+    box-shadow:
+
+        0 0 0 35px rgba(171, 71, 188, 0.025),
+
+        0 0 0 70px rgba(66, 165, 245, 0.02);
+
+    pointer-events:
+        none;
+}
+
+
+/* ==========================================
+   FORMAS DECORATIVAS
+   ========================================== */
+
+.hero-forma {
+
+    position:
+        absolute;
+
+    border-radius:
+        50%;
+
+    pointer-events:
+        none;
+
+    z-index:
+        1;
+}
+
+
+.hero-forma-1 {
+
+    width:
+        18px;
+
+    height:
+        18px;
+
+    background:
+        var(--azul-claro);
+
+    top:
+        48px;
+
+    right:
+        22%;
+
+    opacity:
+        0.9;
+
+    box-shadow:
+        0 0 20px rgba(66, 165, 245, 0.45);
+}
+
+
+.hero-forma-2 {
+
+    width:
+        12px;
+
+    height:
+        12px;
+
+    background:
+        var(--rosa);
+
+    bottom:
+        48px;
+
+    left:
+        20%;
+
+    opacity:
+        0.9;
+
+    box-shadow:
+        0 0 18px rgba(236, 64, 122, 0.45);
+}
+
+
+.hero-forma-3 {
+
+    width:
+        9px;
+
+    height:
+        9px;
+
+    background:
+        var(--roxo-claro);
+
+    top:
+        85px;
+
+    left:
+        13%;
+
+    opacity:
+        0.9;
+
+    box-shadow:
+        0 0 15px rgba(171, 71, 188, 0.45);
+}
+
+
+/* ==========================================
+   CONTEÚDO BOAS-VINDAS
+   ========================================== */
+
+.boas-vindas-conteudo {
+
+    position:
+        relative;
+
+    z-index:
+        5;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    padding:
+        30px;
+}
+
+
+.boas-vindas-conteudo::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        78%;
+
+    height:
+        78%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius:
+        26px;
+
+    pointer-events:
+        none;
+
+    z-index:
+        -1;
+
+    box-shadow:
+        inset 0 0 40px rgba(255, 255, 255, 0.015);
+}
+
+
+.boas-vindas h2 {
+
+    font-size:
+        clamp(42px, 6vw, 72px);
+
+    line-height:
+        1.05;
+
+    letter-spacing:
+        -2px;
+
+    color:
+        #f4f7f5;
+
+    font-weight:
+        400;
+
+    text-shadow:
+        0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+.boas-vindas h2 strong {
+
+    display:
+        block;
+
+    margin-top:
+        10px;
+
+    font-size:
+        clamp(48px, 7vw, 82px);
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -3px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #66bb6a 0%,
+            #4db6ac 25%,
+            #42a5f5 50%,
+            #ab47bc 75%,
+            #ec407a 100%
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    filter:
+        drop-shadow(
+            0 0 18px
+            rgba(66, 165, 245, 0.12)
+        );
+}
+
+
+.boas-vindas-conteudo::after {
+
+    content:
+        "";
+
+    display:
+        block;
+
+    width:
+        130px;
+
+    height:
+        5px;
+
+    margin:
+        28px auto 0;
+
+    border-radius:
+        20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--verde),
+            var(--azul),
+            var(--roxo),
+            var(--rosa)
+        );
+
+    box-shadow:
+        0 0 18px rgba(66, 165, 245, 0.22);
+}
+
+
+/* ==========================================
+   TÍTULO DO MENU
+   ========================================== */
+
+.titulo-menu {
+
+    margin:
+        40px 0 20px;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-between;
+}
+
+
+.titulo-menu span {
+
+    font-size:
+        11px;
+
+    color:
+        var(--azul-claro);
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        1.5px;
+}
+
+
+.titulo-menu h2 {
+
+    margin-top:
+        5px;
+
+    font-size:
+        25px;
+
+    color:
+        #f1f5f2;
+}
+
+
+.titulo-menu p {
+
+    color:
+        var(--texto-suave);
+
+    font-size:
+        14px;
+}
+
+
+/* ==========================================
+   MENU
+   ========================================== */
+
+.menu {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap:
+        16px;
+}
+
+
+/* ==========================================
+   CARDS DO MENU
+   ========================================== */
+
+.menu-card {
+
+    width:
+        100%;
+
+    min-height:
+        115px;
+
+    border:
+        1px solid var(--borda);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #151b18,
+            #111614
+        );
+
+    color:
+        var(--texto);
+
+    border-radius:
+        18px;
+
+    padding:
+        20px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    text-align:
+        left;
+
+    gap:
+        16px;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.28);
+
+    transition:
+
+        transform 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        border-color 0.25s ease,
+
+        background 0.25s ease;
+
+    font-family:
+        inherit;
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.menu-card::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    width:
+        120px;
+
+    height:
+        120px;
+
+    border-radius:
+        50%;
+
+    right:
+        -70px;
+
+    bottom:
+        -80px;
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    pointer-events:
+        none;
+}
+
+
+.menu-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--sombra-hover);
+
+    background:
+        var(--card-hover);
+}
+
+
+.menu-card:active {
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* ==========================================
+   CORES DOS CARDS
+   ========================================== */
+
+.menu-card:nth-child(1) {
+    border-left:
+        3px solid var(--verde);
+}
+
+
+.menu-card:nth-child(2) {
+    border-left:
+        3px solid var(--azul);
+}
+
+
+.menu-card:nth-child(3) {
+    border-left:
+        3px solid var(--laranja);
+}
+
+
+.menu-card:nth-child(4) {
+    border-left:
+        3px solid var(--rosa);
+}
+
+
+.menu-card:nth-child(5) {
+    border-left:
+        3px solid var(--turquesa);
+}
+
+
+.menu-card:nth-child(6) {
+    border-left:
+        3px solid var(--roxo);
+}
+
+
+.menu-card:nth-child(1):hover {
+    border-color:
+        var(--verde);
+
+    box-shadow:
+        0 18px 40px rgba(67, 160, 71, 0.15);
+}
+
+
+.menu-card:nth-child(2):hover {
+    border-color:
+        var(--azul);
+
+    box-shadow:
+        0 18px 40px rgba(66, 165, 245, 0.16);
+}
+
+
+.menu-card:nth-child(3):hover {
+    border-color:
+        var(--laranja);
+
+    box-shadow:
+        0 18px 40px rgba(251, 140, 0, 0.15);
+}
+
+
+.menu-card:nth-child(4):hover {
+    border-color:
+        var(--rosa);
+
+    box-shadow:
+        0 18px 40px rgba(236, 64, 122, 0.16);
+}
+
+
+.menu-card:nth-child(5):hover {
+    border-color:
+        var(--turquesa);
+
+    box-shadow:
+        0 18px 40px rgba(38, 166, 154, 0.16);
+}
+
+
+.menu-card:nth-child(6):hover {
+    border-color:
+        var(--roxo);
+
+    box-shadow:
+        0 18px 40px rgba(171, 71, 188, 0.16);
+}
+
+
+.menu-card.destaque {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #21151b,
+            #181419
+        );
+
+    border-color:
+        rgba(236, 64, 122, 0.35);
+}
+
+
+/* ==========================================
+   ÍCONES
+   ========================================== */
+
+.icone {
+
+    width:
+        58px;
+
+    height:
+        58px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        16px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        27px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.menu-card:hover .icone {
+
+    transform:
+        scale(1.08);
+}
+
+
+.icone.grupos {
+
+    background:
+        linear-gradient(
+            135deg,
+            #16351c,
+            #214d29
+        );
+
+    color:
+        #81c784;
+}
+
+
+.icone.alunos {
+
+    background:
+        linear-gradient(
+            135deg,
+            #102d43,
+            #174d72
+        );
+
+    color:
+        #64b5f6;
+}
+
+
+.icone.oficinas {
+
+    background:
+        linear-gradient(
+            135deg,
+            #3d2912,
+            #623d13
+        );
+
+    color:
+        #ffb74d;
+}
+
+
+.icone.avaliacoes {
+
+    background:
+        linear-gradient(
+            135deg,
+            #401827,
+            #641f3b
+        );
+
+    color:
+        #f06292;
+}
+
+
+.icone.resultados {
+
+    background:
+        linear-gradient(
+            135deg,
+            #103936,
+            #155850
+        );
+
+    color:
+        #4db6ac;
+}
+
+
+.icone.professores {
+
+    background:
+        linear-gradient(
+            135deg,
+            #32183a,
+            #512361
+        );
+
+    color:
+        #ce93d8;
+}
+
+
+/* ==========================================
+   TEXTO DOS CARDS
+   ========================================== */
+
+.menu-card-texto {
+
+    flex:
+        1;
+}
+
+
+.menu-card h3 {
+
+    font-size:
+        17px;
+
+    color:
+        #f1f5f2;
+
+    margin-bottom:
+        5px;
+}
+
+
+.menu-card p {
+
+    font-size:
+        13px;
+
+    line-height:
+        1.4;
+
+    color:
+        #9ba79f;
+}
+
+
+/* ==========================================
+   SETA
+   ========================================== */
+
+.seta {
+
+    font-size:
+        23px;
+
+    color:
+        #69766e;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.menu-card:hover .seta {
+
+    transform:
+        translateX(5px);
+
+    color:
+        #ffffff;
+}
+
+
+/* ==========================================
+   INFORMATIVO
+   ========================================== */
+
+.informativo {
+
+    margin-top:
+        30px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #151d19,
+            #121816
+        );
+
+    border:
+        1px solid #29352e;
+
+    border-radius:
+        18px;
+
+    padding:
+        20px 24px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.25);
+
+    position:
+        relative;
+
+    overflow:
+        hidden;
+}
+
+
+.informativo-icone {
+
+    width:
+        45px;
+
+    height:
+        45px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #302019,
+            #412421
+        );
+
+    border:
+        1px solid #60402e;
+
+    border-radius:
+        13px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        22px;
+
+    flex-shrink:
+        0;
+}
+
+
+.informativo strong {
+
+    display:
+        block;
+
+    color:
+        #ffb74d;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        4px;
+}
+
+
+.informativo p {
+
+    color:
+        #9da8a1;
+
+    font-size:
+        13px;
+
+    line-height:
+        1.4;
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
+
+footer {
+
+    text-align:
+        center;
+
+    padding:
+        25px 20px 35px;
+
+    color:
+        #69756e;
+
+    font-size:
+        12px;
+}
+
+
+footer strong {
+
+    color:
+        #66bb6a;
+}
+
+
+footer span {
+
+    display:
+        block;
+
+    margin-top:
+        5px;
+
+    opacity:
+        0.8;
+}
+
+
+/* ==========================================
+   FORMULÁRIOS DO SISTEMA
+   ========================================== */
+
+form,
+.card {
+
+    background:
+        #151b18;
+
+    color:
+        #f1f5f2;
+
+    padding:
+        20px;
+
+    border-radius:
+        8px;
+
+    margin-bottom:
+        15px;
+
+    border:
+        1px solid #29352e;
+
+    box-shadow:
+        0 7px 22px rgba(0, 0, 0, 0.25);
+}
+
+
+label {
+
+    display:
+        block;
+
+    margin-top:
+        12px;
+
+    margin-bottom:
+        5px;
+
+    font-weight:
+        bold;
+
+    color:
+        #dce5df;
+}
+
+
+input,
+select {
+
+    width:
+        100%;
+
+    padding:
+        10px;
+
+    background:
+        #0e1411;
+
+    color:
+        #f1f5f2;
+
+    border:
+        1px solid #354239;
+
+    border-radius:
+        8px;
+
+    outline:
+        none;
+}
+
+
+input:focus,
+select:focus {
+
+    border-color:
+        #42a5f5;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(66, 165, 245, 0.12);
+}
+
+
+option {
+
+    background:
+        #151b18;
+
+    color:
+        #f1f5f2;
+}
+
+
+#listaGrupos,
+#listaAlunos {
+
+    margin-top:
+        20px;
+}
+
+
+/* =========================================================
+   ÁREA DE AVALIAÇÕES
+   ========================================================= */
+
+
+/* ==========================================
+   LISTA DE ALUNOS
+   ========================================== */
+
+#listaAlunos {
+
+    color:
+        #17201b;
+}
+
+
+/* ==========================================
+   CARDS BRANCOS DA AVALIAÇÃO
+   ========================================== */
+
+#listaAlunos .card {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #17201b !important;
+
+    border:
+        1px solid #d8dfda;
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+
+/* ==========================================
+   NOME DOS ALUNOS
+   ========================================== */
+
+#listaAlunos .card h1,
+#listaAlunos .card h2,
+#listaAlunos .card h3,
+#listaAlunos .card h4,
+#listaAlunos .card h5,
+#listaAlunos .card h6 {
+
+    color:
+        #17201b !important;
+}
+
+
+/* ==========================================
+   TEXTOS DOS CARDS
+   ========================================== */
+
+#listaAlunos .card p {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+#listaAlunos .card strong {
+
+    color:
+        #17201b !important;
+}
+
+
+#listaAlunos .card span {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+/* ==========================================
+   HISTÓRICO DE AVALIAÇÃO
+   ========================================== */
+
+/*
+   IMPORTANTE:
+   O histórico pode estar sendo criado
+   dinamicamente pelo JavaScript.
+*/
+
+#historicoAvaliacoes {
+
+    color:
+        #17201b !important;
+}
+
+
+/* TÍTULOS DO HISTÓRICO */
+
+#historicoAvaliacoes h1,
+#historicoAvaliacoes h2,
+#historicoAvaliacoes h3,
+#historicoAvaliacoes h4,
+#historicoAvaliacoes h5,
+#historicoAvaliacoes h6 {
+
+    color:
+        #17201b !important;
+}
+
+
+/* NOME DO ALUNO */
+
+#historicoAvaliacoes strong {
+
+    color:
+        #17201b !important;
+}
+
+
+/* TEXTOS */
+
+#historicoAvaliacoes p {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+/* SPANS */
+
+#historicoAvaliacoes span {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+/* LABELS */
+
+#historicoAvaliacoes label {
+
+    color:
+        #26332c !important;
+}
+
+
+/* ==========================================
+   CARDS DO HISTÓRICO
+   ========================================== */
+
+#historicoAvaliacoes .card {
+
+    background:
+        #ffffff !important;
+
+    color:
+        #17201b !important;
+
+    border:
+        1px solid #d8dfda;
+
+    border-radius:
+        14px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.16);
+}
+
+
+/* TÍTULO DO CARD */
+
+#historicoAvaliacoes .card h1,
+#historicoAvaliacoes .card h2,
+#historicoAvaliacoes .card h3,
+#historicoAvaliacoes .card h4,
+#historicoAvaliacoes .card h5,
+#historicoAvaliacoes .card h6 {
+
+    color:
+        #17201b !important;
+}
+
+
+/* TEXTO DO CARD */
+
+#historicoAvaliacoes .card p {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+/* TEXTO FORTE */
+
+#historicoAvaliacoes .card strong {
+
+    color:
+        #17201b !important;
+}
+
+
+/* SPAN DO CARD */
+
+#historicoAvaliacoes .card span {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+/* ==========================================
+   CASO O HISTÓRICO USE CLASSES
+   ========================================== */
+
+.historico,
+.historico-avaliacao,
+.historico-avaliacoes {
+
+    color:
+        #17201b !important;
+}
+
+
+.historico h1,
+.historico h2,
+.historico h3,
+.historico h4,
+.historico-avaliacao h1,
+.historico-avaliacao h2,
+.historico-avaliacao h3,
+.historico-avaliacao h4,
+.historico-avaliacoes h1,
+.historico-avaliacoes h2,
+.historico-avaliacoes h3,
+.historico-avaliacoes h4 {
+
+    color:
+        #17201b !important;
+}
+
+
+.historico p,
+.historico-avaliacao p,
+.historico-avaliacoes p {
+
+    color:
+        #4f5d55 !important;
+}
+
+
+.historico strong,
+.historico-avaliacao strong,
+.historico-avaliacoes strong {
+
+    color:
+        #17201b !important;
+}
+
+
+/* ==========================================
+   BOTÕES DO HISTÓRICO
+   ========================================== */
+
+#historicoAvaliacoes button {
+
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+}
+
+
+/* ==========================================
+   CAMPOS DO HISTÓRICO
+   ========================================== */
+
+#historicoAvaliacoes input,
+#historicoAvaliacoes select {
+
+    color:
+        #17201b !important;
+
+    background:
+        #ffffff !important;
+
+    border:
+        1px solid #cbd4ce;
+}
+
+
+#historicoAvaliacoes input::placeholder {
+
+    color:
+        #7a847e;
+}
+
+
+#historicoAvaliacoes option {
+
+    color:
+        #17201b;
+
+    background:
+        #ffffff;
+}
+
+
+/* ==========================================
+   RESULTADO DAS AVALIAÇÕES
+   ========================================== */
+
+.resultado,
+.resultado-avaliacao {
+
+    color:
+        #17201b;
+}
+
+
+.resultado h3,
+.resultado h4,
+.resultado strong,
+.resultado-avaliacao h3,
+.resultado-avaliacao h4,
+.resultado-avaliacao strong {
+
+    color:
+        #17201b !important;
+}
+
+
+/* ==========================================
+   STATUS
+   ========================================== */
+
+.status-realizado {
+
+    color:
+        #1b5e20 !important;
+
+    font-weight:
+        bold;
+}
+
+
+.status-revisar {
+
+    color:
+        #e65100 !important;
+
+    font-weight:
+        bold;
+}
+
+
+/* ==========================================
+   BOTÕES
+   ========================================== */
+
+button {
+
+    font-family:
+        inherit;
+}
+
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+
+@media (max-width: 800px) {
+
+    .boas-vindas {
+
+        min-height:
+            290px;
+
+        padding:
+            30px;
+    }
+
+
+    .boas-vindas h2 {
+
+        font-size:
+            43px;
+    }
+
+
+    .boas-vindas h2 strong {
+
+        font-size:
+            50px;
+    }
+
+
+    .logo-area {
+
+        width:
+            270px;
+
+        height:
+            200px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR
+   ========================================== */
+
+@media (max-width: 650px) {
+
+    .topo {
+
+        min-height:
+            160px;
+    }
+
+
+    .logo-area {
+
+        width:
+            220px;
+
+        height:
+            165px;
+    }
+
+
+    .container {
+
+        width:
+            92%;
+
+        margin-top:
+            25px;
+    }
+
+
+    .boas-vindas {
+
+        min-height:
+            260px;
+
+        padding:
+            25px 15px;
+
+        border-radius:
+            24px;
+    }
+
+
+    .boas-vindas-conteudo {
+
+        padding:
+            15px;
+    }
+
+
+    .boas-vindas h2 {
+
+        font-size:
+            35px;
+
+        letter-spacing:
+            -1.5px;
+    }
+
+
+    .boas-vindas h2 strong {
+
+        font-size:
+            41px;
+
+        letter-spacing:
+            -2px;
+    }
+
+
+    .boas-vindas-conteudo::before {
+
+        width:
+            90%;
+
+        height:
+            80%;
+
+        border-radius:
+            20px;
+    }
+
+
+    .titulo-menu {
+
+        display:
+            block;
+    }
+
+
+    .titulo-menu p {
+
+        margin-top:
+            7px;
+    }
+
+
+    .menu {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .menu-card {
+
+        min-height:
+            100px;
+    }
+
+
+    .informativo {
+
+        padding:
+            18px;
+    }
+}
+
+
+/* ==========================================
+   CELULAR PEQUENO
+   ========================================== */
+
+@media (max-width: 400px) {
+
+    .topo {
+
+        min-height:
+            135px;
+    }
+
+
+    .logo-area {
+
+        width:
+            190px;
+
+        height:
+            145px;
+    }
+
+
+    .boas-vindas {
+
+        min-height:
+            230px;
+
+        padding:
+            20px 10px;
+    }
+
+
+    .boas-vindas h2 {
+
+        font-size:
+            29px;
+    }
+
+
+    .boas-vindas h2 strong {
+
+        font-size:
+            34px;
+    }
+
+
+    .menu-card {
+
+        padding:
+            15px;
+    }
+
+
+    .icone {
+
+        width:
+            50px;
+
+        height:
+            50px;
+
+        font-size:
+            23px;
+    }
+}/* =========================================================
+   LOGIN - SISTEMA ALDEIA DO FUTURO
+   TEMA ESCURO MULTICOLORIDO
+   ========================================================= */
+
+
+/* =========================================================
+   PÁGINA DE LOGIN
+   ========================================================= */
+
+.pagina-login {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px 20px;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(67, 160, 71, 0.16),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(66, 165, 245, 0.15),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(236, 64, 122, 0.12),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #050806 0%,
+            #0a100d 45%,
+            #080c0a 100%
+        );
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   ELEMENTOS DECORATIVOS
+   ========================================================= */
+
+.pagina-login::before {
+
+    content: "";
+
+    position: fixed;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    left: -250px;
+    top: -250px;
+
+    border:
+        1px solid rgba(67, 160, 71, 0.15);
+
+    box-shadow:
+
+        0 0 0 35px rgba(67, 160, 71, 0.025),
+
+        0 0 0 70px rgba(66, 165, 245, 0.018),
+
+        0 0 0 110px rgba(171, 71, 188, 0.012);
+
+    pointer-events: none;
+
+}
+
+
+.pagina-login::after {
+
+    content: "";
+
+    position: fixed;
+
+    width: 550px;
+    height: 550px;
+
+    border-radius: 50%;
+
+    right: -280px;
+    bottom: -300px;
+
+    border:
+        1px solid rgba(236, 64, 122, 0.15);
+
+    box-shadow:
+
+        0 0 0 35px rgba(236, 64, 122, 0.025),
+
+        0 0 0 75px rgba(171, 71, 188, 0.018);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.login-container {
+
+    width: 100%;
+
+    max-width: 560px;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* =========================================================
+   CARTÃO
+   ========================================================= */
+
+.login-card {
+
+    position: relative;
+
+    width: 100%;
+
+    padding: 50px 55px 40px;
+
+    border-radius: 30px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(22, 29, 25, 0.97),
+            rgba(13, 18, 16, 0.98)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+
+        0 30px 80px rgba(0, 0, 0, 0.60),
+
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   BRILHO COLORIDO DO CARTÃO
+   ========================================================= */
+
+.login-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    left: 50%;
+    top: -250px;
+
+    transform: translateX(-50%);
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(66, 165, 245, 0.14),
+            rgba(171, 71, 188, 0.07),
+            transparent 68%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   LINHA COLORIDA SUPERIOR
+   ========================================================= */
+
+.login-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 75%;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #43a047,
+            #42a5f5,
+            #ab47bc,
+            #ec407a
+        );
+
+    box-shadow:
+
+        0 0 18px rgba(66, 165, 245, 0.35);
+
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.login-logo {
+
+    width: 100%;
+
+    height: 230px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 5px;
+
+}
+
+
+/* =========================================================
+   IMAGEM DA LOGO
+   ========================================================= */
+
+.login-logo img {
+
+    width: 320px;
+
+    height: 230px;
+
+    max-width: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    filter:
+
+        drop-shadow(
+            0 12px 25px rgba(0, 0, 0, 0.55)
+        );
+
+    transition:
+
+        transform 0.3s ease,
+
+        filter 0.3s ease;
+
+}
+
+
+/* =========================================================
+   EFEITO LOGO
+   ========================================================= */
+
+.login-logo img:hover {
+
+    transform: scale(1.04);
+
+    filter:
+
+        drop-shadow(
+            0 15px 32px rgba(66, 165, 245, 0.22)
+        );
+
+}
+
+
+/* =========================================================
+   TÍTULO
+   ========================================================= */
+
+.login-titulo {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* =========================================================
+   TEXTO SISTEMA
+   ========================================================= */
+
+.login-titulo span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #64b5f6;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* =========================================================
+   NOME
+   ========================================================= */
+
+.login-titulo h1 {
+
+    margin: 0;
+
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #66bb6a,
+            #4db6ac,
+            #42a5f5,
+            #ab47bc,
+            #ec407a
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+}
+
+
+/* =========================================================
+   SUBTÍTULO
+   ========================================================= */
+
+.login-titulo p {
+
+    margin-top: 10px;
+
+    color: #aab5af;
+
+    font-size: 14px;
+
+    letter-spacing: 0.5px;
+
+}
+
+
+/* =========================================================
+   FORMULÁRIO
+   ========================================================= */
+
+.form-login {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================================
+   CAMPO
+   ========================================================= */
+
+.campo-login {
+
+    margin-bottom: 22px;
+
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.campo-login label {
+
+    display: block;
+
+    margin: 0 0 9px;
+
+    color: #dce5df;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   INPUT COM ÍCONE
+   ========================================================= */
+
+.input-login {
+
+    width: 100%;
+
+    height: 62px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 17px;
+
+    border-radius: 15px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #0d1310,
+            #101713
+        );
+
+    border:
+        1px solid #2d3932;
+
+    transition:
+
+        border-color 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        background 0.25s ease;
+
+}
+
+
+/* =========================================================
+   ÍCONE
+   ========================================================= */
+
+.input-login > span {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+
+        rgba(66, 165, 245, 0.08);
+
+    font-size: 17px;
+
+    flex-shrink: 0;
+
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-login input {
+
+    width: 100%;
+
+    height: 100%;
+
+    padding: 0;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #f4f7f5;
+
+    font-size: 16px;
+
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.input-login input::placeholder {
+
+    color: #68756d;
+
+}
+
+
+/* =========================================================
+   FOCO
+   ========================================================= */
+
+.input-login:focus-within {
+
+    border-color: #42a5f5;
+
+    background: #101813;
+
+    box-shadow:
+
+        0 0 0 4px rgba(66, 165, 245, 0.10),
+
+        0 8px 25px rgba(0, 0, 0, 0.20);
+
+}
+
+
+/* =========================================================
+   BOTÃO MOSTRAR SENHA
+   ========================================================= */
+
+.btn-mostrar-senha {
+
+    width: 38px;
+
+    height: 38px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #9ba79f;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 18px;
+
+    flex-shrink: 0;
+
+    transition:
+
+        background 0.2s ease,
+
+        color 0.2s ease;
+
+}
+
+
+.btn-mostrar-senha:hover {
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+}
+
+
+/* =========================================================
+   MENSAGEM
+   ========================================================= */
+
+.mensagem-login {
+
+    min-height: 22px;
+
+    margin-bottom: 10px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.mensagem-login.sucesso {
+
+    color: #66bb6a;
+
+}
+
+
+.mensagem-login.erro {
+
+    color: #f06292;
+
+}
+
+
+/* =========================================================
+   BOTÃO LOGIN
+   ========================================================= */
+
+.btn-login {
+
+    width: 100%;
+
+    height: 64px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    margin-top: 5px;
+
+    padding: 0 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    background:
+
+        linear-gradient(
+            100deg,
+            #1b5e20,
+            #00897b 35%,
+            #1976d2 70%,
+            #8e24aa
+        );
+
+    box-shadow:
+
+        0 12px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+
+        transform 0.25s ease,
+
+        box-shadow 0.25s ease,
+
+        filter 0.25s ease;
+
+}
+
+
+.btn-login strong {
+
+    font-size: 27px;
+
+    font-weight: 400;
+
+    transition:
+
+        transform 0.25s ease;
+
+}
+
+
+.btn-login:hover {
+
+    transform: translateY(-3px);
+
+    filter: brightness(1.08);
+
+    box-shadow:
+
+        0 18px 40px rgba(0, 0, 0, 0.50);
+
+}
+
+
+.btn-login:hover strong {
+
+    transform: translateX(6px);
+
+}
+
+
+.btn-login:active {
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.login-footer {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 30px;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    text-align: center;
+
+}
+
+
+.login-footer span {
+
+    display: block;
+
+    color: #68756d;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+
+}
+
+
+.login-footer span:first-child {
+
+    color: #8c9991;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   CELULAR
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .pagina-login {
+
+        padding: 20px 15px;
+
+    }
+
+
+    .login-card {
+
+        padding: 35px 25px 30px;
+
+        border-radius: 24px;
+
+    }
+
+
+    .login-logo {
+
+        height: 190px;
+
+    }
+
+
+    .login-logo img {
+
+        width: 270px;
+
+        height: 190px;
+
+    }
+
+
+    .login-titulo {
+
+        margin-bottom: 28px;
+
+    }
+
+
+    .login-titulo h1 {
+
+        font-size: 31px;
+
+    }
+
+
+    .login-titulo p {
+
+        font-size: 13px;
+
+    }
+
+
+    .input-login {
+
+        height: 58px;
+
+    }
+
+
+    .btn-login {
+
+        height: 60px;
+
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .pagina-login {
+
+        padding: 12px;
+
+    }
+
+
+    .login-card {
+
+        padding: 30px 20px 25px;
+
+    }
+
+
+    .login-logo {
+
+        height: 160px;
+
+    }
+
+
+    .login-logo img {
+
+        width: 230px;
+
+        height: 160px;
+
+    }
+
+
+    .login-titulo h1 {
+
+        font-size: 27px;
+
+    }
+
+
+    .login-titulo p {
+
+        font-size: 12px;
+
+    }
+
+
+    .campo-login label {
+
+        font-size: 13px;
+
+    }
+
+
+    .input-login {
+
+        height: 55px;
+
+    }
+
+}/* =========================================================
+   BOTÃO SAIR
+   ========================================================= */
+
+.btn-sair {
+
+    position: absolute;
+
+    top: 25px;
+    right: 30px;
+
+    z-index: 20;
+
+    border: 1px solid rgba(236, 64, 122, 0.35);
+
+    border-radius: 12px;
+
+    padding: 10px 18px;
+
+    background:
+        rgba(20, 25, 22, 0.75);
+
+    color: #f4f7f5;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    backdrop-filter: blur(8px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+
+}
+
+
+.btn-sair:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        rgba(236, 64, 122, 0.16);
+
+    border-color:
+        #ec407a;
+
+    box-shadow:
+        0 8px 25px rgba(236, 64, 122, 0.18);
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+    .btn-sair {
+
+        top: 15px;
+
+        right: 15px;
+
+        padding: 8px 13px;
+
+        font-size: 12px;
+
+    }
+
+}

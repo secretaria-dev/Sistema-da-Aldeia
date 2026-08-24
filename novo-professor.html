@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Novo Professor - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         CABEÇALHO
+         ========================================== -->
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Cadastro de Professor
+        </p>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         CONTEÚDO
+         ========================================== -->
+
+    <main class="container">
+
+
+        <h2>
+            Novo Professor
+        </h2>
+
+
+        <form id="formProfessor">
+
+
+            <!-- ======================================
+                 NOME
+                 ====================================== -->
+
+            <label for="nome">
+                Nome completo
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite o nome completo"
+                required
+            >
+
+
+
+            <!-- ======================================
+                 E-MAIL
+                 ====================================== -->
+
+            <label for="email">
+                E-mail
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Digite o e-mail do professor"
+                required
+            >
+
+            <small>
+                Este e-mail será usado como login de acesso.
+            </small>
+
+
+
+            <!-- ======================================
+                 TELEFONE
+                 ====================================== -->
+
+            <label for="telefone">
+                Telefone / WhatsApp
+            </label>
+
+            <input
+                type="text"
+                id="telefone"
+                placeholder="Digite o telefone"
+            >
+
+
+
+            <!-- ======================================
+                 PERFIL
+                 ====================================== -->
+
+            <label for="tipo">
+                Perfil de acesso
+            </label>
+
+            <select
+                id="tipo"
+                required
+            >
+
+                <option value="educador">
+                    Educador
+                </option>
+
+                <option value="administrador">
+                    Administrador
+                </option>
+
+            </select>
+
+
+
+            <!-- ======================================
+                 STATUS
+                 ====================================== -->
+
+            <label for="status">
+                Status
+            </label>
+
+            <select
+                id="status"
+                required
+            >
+
+                <option value="Ativo">
+                    Ativo
+                </option>
+
+                <option value="Inativo">
+                    Inativo
+                </option>
+
+            </select>
+
+
+
+            <!-- ======================================
+                 AVISO DE ACESSO
+                 ====================================== -->
+
+            <div class="card">
+
+                <h3>
+                    🔐 Acesso do professor
+                </h3>
+
+                <p>
+                    O login será criado automaticamente
+                    usando o e-mail informado acima.
+                </p>
+
+                <p>
+                    A senha inicial será:
+                    <strong>Aldeia@2026</strong>
+                </p>
+
+                <p>
+                    No primeiro acesso, o professor
+                    deverá criar uma nova senha.
+                </p>
+
+            </div>
+
+
+
+            <br>
+
+
+            <!-- ======================================
+                 BOTÃO SALVAR
+                 ====================================== -->
+
+            <button
+                type="submit"
+            >
+                💾 Salvar Professor
+            </button>
+
+
+
+            <!-- ======================================
+                 BOTÃO VOLTAR
+                 ====================================== -->
+
+            <button
+                type="button"
+                onclick="window.location.href='professores.html'"
+            >
+                🔙 Voltar
+            </button>
+
+
+        </form>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script src="professores.js"></script>
+
+
+</body>
+
+</html>

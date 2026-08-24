@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Novo Grupo - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Cadastro de Novo Grupo
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+        <h2>
+            Novo Grupo
+        </h2>
+
+
+        <form id="formGrupo">
+
+
+            <label for="nome">
+                Nome do Grupo
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                placeholder="Digite o nome do grupo"
+                required
+            >
+
+
+            <label for="responsavel">
+                Responsável pelo Grupo
+            </label>
+
+            <input
+                type="text"
+                id="responsavel"
+                name="responsavel"
+                placeholder="Digite o nome do responsável"
+                required
+            >
+
+
+            <label for="inicio">
+                Data de início
+            </label>
+
+            <input
+                type="date"
+                id="inicio"
+                name="inicio"
+                required
+            >
+
+
+            <label for="fim">
+                Data de término
+            </label>
+
+            <input
+                type="date"
+                id="fim"
+                name="fim"
+                required
+            >
+
+
+            <label for="carga">
+                Carga horária total
+            </label>
+
+            <input
+                type="number"
+                id="carga"
+                name="carga"
+                placeholder="Ex.: 560"
+                required
+            >
+
+
+            <label for="vagas">
+                Número de vagas
+            </label>
+
+            <input
+                type="number"
+                id="vagas"
+                name="vagas"
+                placeholder="Ex.: 40"
+                required
+            >
+
+
+            <label for="status">
+                Status do Grupo
+            </label>
+
+            <select
+                id="status"
+                name="status"
+                required
+            >
+
+                <option value="ativo">
+                    Ativo
+                </option>
+
+                <option value="planejado">
+                    Planejado
+                </option>
+
+                <option value="encerrado">
+                    Encerrado
+                </option>
+
+            </select>
+
+
+            <br>
+            <br>
+
+
+            <button type="submit">
+                💾 Salvar Grupo
+            </button>
+
+
+            <button
+                type="button"
+                onclick="window.location.href='grupos.html'"
+            >
+                🔙 Voltar
+            </button>
+
+
+        </form>
+
+    </main>
+
+
+    <script src="grupos.js"></script>
+
+</body>
+
+</html>

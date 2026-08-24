@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nova Senha | Aldeia do Futuro</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="pagina-login">
+
+
+    <!-- ==========================================
+         PROTEÇÃO
+         ========================================== -->
+
+    <script>
+
+        const usuarioLogado =
+            localStorage.getItem(
+                "usuarioLogado"
+            );
+
+
+        const dadosSalvos =
+            localStorage.getItem(
+                "dadosUsuario"
+            );
+
+
+        if (
+            !usuarioLogado ||
+            !dadosSalvos
+        ) {
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+    </script>
+
+
+
+    <!-- ==========================================
+         CONTAINER
+         ========================================== -->
+
+    <main class="login-container">
+
+
+        <section class="login-card">
+
+
+            <!-- ======================================
+                 LOGO
+                 ====================================== -->
+
+            <div class="login-logo">
+
+                <img
+                    src="img/logo-adf-fundo-preto.png"
+                    alt="Aldeia do Futuro"
+                >
+
+            </div>
+
+
+
+            <!-- ======================================
+                 TÍTULO
+                 ====================================== -->
+
+            <div class="login-titulo">
+
+                <span>
+                    PRIMEIRO ACESSO
+                </span>
+
+                <h1>
+                    Criar nova senha
+                </h1>
+
+                <p>
+                    Proteja seu acesso ao sistema
+                </p>
+
+            </div>
+
+
+
+            <!-- ======================================
+                 INFORMAÇÃO
+                 ====================================== -->
+
+            <div class="card">
+
+                <p>
+                    👋 Bem-vindo(a) ao
+                    <strong>
+                        Sistema Aldeia do Futuro
+                    </strong>.
+                </p>
+
+                <p>
+                    Por segurança, você precisa
+                    criar uma nova senha antes
+                    de continuar.
+                </p>
+
+            </div>
+
+
+
+            <br>
+
+
+
+            <!-- ======================================
+                 FORMULÁRIO
+                 ====================================== -->
+
+            <form
+                id="formNovaSenha"
+                class="form-login"
+            >
+
+
+                <!-- ==================================
+                     NOVA SENHA
+                     ================================== -->
+
+                <div class="campo-login">
+
+                    <label for="novaSenha">
+                        Nova senha
+                    </label>
+
+                    <div class="input-login">
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="novaSenha"
+                            placeholder="Digite sua nova senha"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="mostrarNovaSenha"
+                            class="btn-mostrar-senha"
+                        >
+                            👁️
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     CONFIRMAR SENHA
+                     ================================== -->
+
+                <div class="campo-login">
+
+                    <label for="confirmarSenha">
+                        Confirmar nova senha
+                    </label>
+
+                    <div class="input-login">
+
+                        <span>
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="confirmarSenha"
+                            placeholder="Digite novamente sua senha"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ==================================
+                     MENSAGEM
+                     ================================== -->
+
+                <div
+                    id="mensagemSenha"
+                    class="mensagem-login"
+                ></div>
+
+
+
+                <!-- ==================================
+                     BOTÃO
+                     ================================== -->
+
+                <button
+                    type="submit"
+                    class="btn-login"
+                >
+
+                    <span>
+                        Salvar nova senha
+                    </span>
+
+                    <strong>
+                        →
+                    </strong>
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- ======================================
+                 RODAPÉ
+                 ====================================== -->
+
+            <div class="login-footer">
+
+                <span>
+                    Sistema Aldeia do Futuro
+                </span>
+
+                <span>
+                    Indicadores de Transformação
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script>
+
+
+        // ==========================================
+        // ELEMENTOS
+        // ==========================================
+
+        const formNovaSenha =
+            document.getElementById(
+                "formNovaSenha"
+            );
+
+
+        const novaSenha =
+            document.getElementById(
+                "novaSenha"
+            );
+
+
+        const confirmarSenha =
+            document.getElementById(
+                "confirmarSenha"
+            );
+
+
+        const mensagemSenha =
+            document.getElementById(
+                "mensagemSenha"
+            );
+
+
+        const mostrarNovaSenha =
+            document.getElementById(
+                "mostrarNovaSenha"
+            );
+
+
+
+        // ==========================================
+        // MOSTRAR SENHA
+        // ==========================================
+
+        if (mostrarNovaSenha) {
+
+            mostrarNovaSenha.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        novaSenha.type ===
+                        "password"
+                    ) {
+
+                        novaSenha.type =
+                            "text";
+
+                        mostrarNovaSenha.textContent =
+                            "🙈";
+
+                    }
+
+                    else {
+
+                        novaSenha.type =
+                            "password";
+
+                        mostrarNovaSenha.textContent =
+                            "👁️";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        // ==========================================
+        // CRIAR NOVA SENHA
+        // ==========================================
+
+        if (formNovaSenha) {
+
+            formNovaSenha.addEventListener(
+                "submit",
+                function (event) {
+
+                    event.preventDefault();
+
+
+
+                    // ==================================
+                    // PEGAR USUÁRIO
+                    // ==================================
+
+                    const usuarioAtual =
+                        localStorage.getItem(
+                            "usuarioLogado"
+                        );
+
+
+                    if (!usuarioAtual) {
+
+                        window.location.replace(
+                            "login.html"
+                        );
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // PEGAR SENHAS
+                    // ==================================
+
+                    const senhaNova =
+                        novaSenha.value;
+
+
+                    const senhaConfirmacao =
+                        confirmarSenha.value;
+
+
+
+                    // ==================================
+                    // VALIDAR TAMANHO
+                    // ==================================
+
+                    if (
+                        senhaNova.length < 6
+                    ) {
+
+                        mensagemSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemSenha.textContent =
+                            "❌ A senha precisa ter pelo menos 6 caracteres.";
+
+
+                        novaSenha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // CONFIRMAR SENHA
+                    // ==================================
+
+                    if (
+                        senhaNova !==
+                        senhaConfirmacao
+                    ) {
+
+                        mensagemSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemSenha.textContent =
+                            "❌ As senhas não são iguais.";
+
+
+                        confirmarSenha.focus();
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // PEGAR PROFESSORES
+                    // ==================================
+
+                    let professores =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "professores"
+                            )
+                        ) || [];
+
+
+
+                    // ==================================
+                    // LOCALIZAR PROFESSOR
+                    // ==================================
+
+                    const indiceProfessor =
+                        professores.findIndex(
+                            function (professor) {
+
+                                return (
+
+                                    professor.usuario
+                                        .toLowerCase() ===
+                                    usuarioAtual
+                                        .toLowerCase()
+
+                                );
+
+                            }
+                        );
+
+
+
+                    // ==================================
+                    // PROFESSOR NÃO ENCONTRADO
+                    // ==================================
+
+                    if (
+                        indiceProfessor === -1
+                    ) {
+
+                        mensagemSenha.className =
+                            "mensagem-login erro";
+
+
+                        mensagemSenha.textContent =
+                            "❌ Usuário não encontrado.";
+
+
+                        return;
+
+                    }
+
+
+
+                    // ==================================
+                    // ATUALIZAR SENHA
+                    // ==================================
+
+                    professores[
+                        indiceProfessor
+                    ].senha =
+                        senhaNova;
+
+
+                    professores[
+                        indiceProfessor
+                    ].primeiroAcesso =
+                        false;
+
+
+
+                    // ==================================
+                    // SALVAR
+                    // ==================================
+
+                    localStorage.setItem(
+                        "professores",
+                        JSON.stringify(
+                            professores
+                        )
+                    );
+
+
+
+                    // ==================================
+                    // ATUALIZAR DADOS DO USUÁRIO
+                    // ==================================
+
+                    let dadosUsuario =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "dadosUsuario"
+                            )
+                        ) || {};
+
+
+
+                    dadosUsuario.primeiroAcesso =
+                        false;
+
+
+
+                    localStorage.setItem(
+
+                        "dadosUsuario",
+
+                        JSON.stringify(
+                            dadosUsuario
+                        )
+
+                    );
+
+
+
+                    // ==================================
+                    // MENSAGEM
+                    // ==================================
+
+                    mensagemSenha.className =
+                        "mensagem-login sucesso";
+
+
+                    mensagemSenha.textContent =
+                        "✅ Senha alterada com sucesso! Entrando no sistema...";
+
+
+
+                    // ==================================
+                    // DESABILITAR BOTÃO
+                    // ==================================
+
+                    const botao =
+                        formNovaSenha.querySelector(
+                            ".btn-login"
+                        );
+
+
+                    if (botao) {
+
+                        botao.disabled =
+                            true;
+
+                    }
+
+
+
+                    // ==================================
+                    // IR PARA SISTEMA
+                    // ==================================
+
+                    setTimeout(
+                        function () {
+
+                            window.location.replace(
+                                "index.html"
+                            );
+
+                        },
+                        1000
+                    );
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

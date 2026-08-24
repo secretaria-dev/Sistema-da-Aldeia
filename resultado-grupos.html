@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Resultado das Avaliações - Grupos</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        /* =====================================
+           CABEÇALHO
+        ====================================== */
+
+        .cabecalho-resultado {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+
+        /* =====================================
+           FILTROS
+        ====================================== */
+
+        .filtros-resultado {
+            display: flex;
+            gap: 15px;
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .campo-filtro {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .campo-filtro label {
+            font-weight: bold;
+        }
+
+        .campo-filtro select {
+            min-width: 250px;
+        }
+
+
+        /* =====================================
+           BOTÕES
+        ====================================== */
+
+        .botoes-resultado {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+
+        /* =====================================
+           TABELA
+        ====================================== */
+
+        .tabela-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1200px;
+            background: white;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        th:first-child,
+        td:first-child {
+            text-align: left;
+            min-width: 240px;
+        }
+
+
+        /* =====================================
+           RESUMO
+        ====================================== */
+
+        .resumo-resultado {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(180px, 1fr));
+
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card-resumo {
+            padding: 18px;
+            border-radius: 10px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .card-resumo strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .card-resumo span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+
+        /* =====================================
+           MENSAGEM INICIAL
+        ====================================== */
+
+        .mensagem-resultado {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+
+        /* =====================================
+           RESPONSIVO
+        ====================================== */
+
+        @media (max-width: 700px) {
+
+            .filtros-resultado {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .campo-filtro select {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .botoes-resultado {
+                width: 100%;
+            }
+
+            .botoes-resultado button {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        Sistema Aldeia
+    </h1>
+
+    <p>
+        Resultado das Avaliações - Grupos
+    </p>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- =====================================
+         CABEÇALHO
+    ====================================== -->
+
+    <div class="cabecalho-resultado">
+
+        <div>
+
+            <h2>
+                📊 Resultado das Avaliações
+            </h2>
+
+            <p>
+                Resultado consolidado dos três marcos de avaliação.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         FILTROS
+    ====================================== -->
+
+    <div class="card">
+
+        <div class="filtros-resultado">
+
+
+            <div class="campo-filtro">
+
+                <label for="grupoResultado">
+                    Grupo / Turma
+                </label>
+
+                <select id="grupoResultado">
+
+                    <option value="">
+                        Selecione o grupo
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="botoes-resultado">
+
+                <button
+                    type="button"
+                    id="btnGerarResultado"
+                >
+                    🔎 Gerar Resultado
+                </button>
+
+
+                <button
+                    type="button"
+                    id="btnExportarExcel"
+                >
+                    📥 Exportar Excel
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="window.location.href='index.html'"
+                >
+                    🔙 Voltar
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         RESUMO
+    ====================================== -->
+
+    <div
+        id="resumoResultado"
+        class="resumo-resultado"
+        style="display:none;"
+    >
+
+        <div class="card-resumo">
+
+            <strong>
+                👥 Alunos
+            </strong>
+
+            <span id="totalAlunos">
+                0
+            </span>
+
+        </div>
+
+
+        <div class="card-resumo">
+
+            <strong>
+                📝 Avaliações
+            </strong>
+
+            <span id="totalAvaliacoes">
+                0
+            </span>
+
+        </div>
+
+
+        <div class="card-resumo">
+
+            <strong>
+                📊 Média da Turma
+            </strong>
+
+            <span id="mediaTurma">
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="card-resumo">
+
+            <strong>
+                📅 Marcos
+            </strong>
+
+            <span>
+                1 • 2 • 3
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         RESULTADO
+    ====================================== -->
+
+    <div
+        id="areaResultado"
+        class="card"
+        style="margin-top:20px;"
+    >
+
+        <div class="mensagem-resultado">
+
+            <h3>
+                📊 Nenhum resultado carregado
+            </h3>
+
+            <p>
+                Selecione um grupo e clique em
+                <strong>Gerar Resultado</strong>.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<!-- =====================================
+     JAVASCRIPT
+====================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="resultado-grupos.js"></script>
+
+</body>
+</html>

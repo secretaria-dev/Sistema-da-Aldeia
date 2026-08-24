@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nova Oficina - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Cadastro de Oficina
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <h2>
+            Nova Oficina
+        </h2>
+
+
+        <form id="formOficina">
+
+
+            <!-- GRUPO -->
+
+            <label for="grupo">
+                Grupo
+            </label>
+
+            <select
+                id="grupo"
+                required
+            >
+
+                <option value="">
+                    Selecione um grupo
+                </option>
+
+            </select>
+
+
+            <!-- NOME -->
+
+            <label for="nome">
+                Nome da Oficina
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite o nome da oficina"
+                required
+            >
+
+
+            <!-- PROFESSOR -->
+
+            <label for="professor">
+                Professor responsável
+            </label>
+
+            <select
+                id="professor"
+                required
+            >
+
+                <option value="">
+                    Selecione um professor
+                </option>
+
+            </select>
+
+
+            <!-- CARGA HORÁRIA -->
+
+            <label for="carga">
+                Carga Horária
+            </label>
+
+            <input
+                type="number"
+                id="carga"
+                placeholder="Ex.: 80"
+                min="1"
+                required
+            >
+
+
+            <!-- STATUS -->
+
+            <label for="status">
+                Status
+            </label>
+
+            <select
+                id="status"
+                required
+            >
+
+                <option value="ativo">
+                    Ativo
+                </option>
+
+                <option value="planejado">
+                    Planejado
+                </option>
+
+                <option value="encerrado">
+                    Encerrado
+                </option>
+
+            </select>
+
+
+            <br>
+            <br>
+
+
+            <!-- SALVAR -->
+
+            <button
+                type="submit"
+            >
+                💾 Salvar Oficina
+            </button>
+
+
+            <!-- VOLTAR -->
+
+            <button
+                type="button"
+                onclick="window.location.href='oficinas.html'"
+            >
+                🔙 Voltar
+            </button>
+
+
+        </form>
+
+
+    </main>
+
+
+    <script src="oficinas.js"></script>
+
+
+</body>
+
+</html>

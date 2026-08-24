@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Professores - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Gestão de Professores
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <h2>
+            Professores
+        </h2>
+
+
+        <div class="menu">
+
+
+            <button
+                onclick="window.location.href='novo-professor.html'"
+            >
+                ➕ Novo Professor
+            </button>
+
+
+            <button
+                onclick="window.location.href='index.html'"
+            >
+                🔙 Voltar ao Menu
+            </button>
+
+
+        </div>
+
+
+        <br>
+
+
+        <h2>
+            Professores Cadastrados
+        </h2>
+
+
+        <div id="listaProfessores">
+
+            <div class="card">
+
+                <h3>
+                    Nenhum professor cadastrado
+                </h3>
+
+                <p>
+                    Clique em "Novo Professor"
+                    para cadastrar.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="professores.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Períodos das Avaliações - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .periodo-card {
+
+            margin-bottom: 20px;
+
+            border-left: 5px solid #2e7d32;
+
+        }
+
+
+        .periodo-card h3 {
+
+            margin-top: 0;
+
+        }
+
+
+        .campos-periodo {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+            margin-top: 15px;
+
+        }
+
+
+        .botoes-periodo {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .btn-salvar {
+
+            background: #2e7d32;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .btn-excluir {
+
+            background: #c62828;
+
+            color: white;
+
+            border: none;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+        }
+
+
+        .status-avaliacao {
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            background: #f5f5f5;
+
+            border-radius: 7px;
+
+        }
+
+
+        .aviso-acesso {
+
+            margin-bottom: 25px;
+
+            padding: 15px;
+
+            background: #fff8e1;
+
+            border-left: 5px solid #f9a825;
+
+            border-radius: 7px;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .campos-periodo {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================
+     PROTEÇÃO DE ACESSO
+========================================== -->
+
+<script>
+
+    // ==========================================
+    // VERIFICAR LOGIN
+    // ==========================================
+
+    const usuarioLogado =
+        localStorage.getItem("usuarioLogado");
+
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem("dadosUsuario")
+        );
+
+
+    // ==========================================
+    // SE NÃO ESTIVER LOGADO
+    // ==========================================
+
+    if (!usuarioLogado) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+
+    // ==========================================
+    // PERÍODO É SOMENTE DO ADMINISTRADOR
+    // ==========================================
+
+    if (
+
+        !dadosUsuario ||
+
+        dadosUsuario.tipo !== "administrador"
+
+    ) {
+
+        alert(
+            "⛔ Acesso negado.\n\nApenas o Administrador pode configurar os períodos das avaliações."
+        );
+
+
+        window.location.replace(
+            "avaliacoes.html"
+        );
+
+    }
+
+</script>
+
+
+
+<!-- ==========================================
+     CABEÇALHO
+========================================== -->
+
+<header>
+
+    <h1>
+        Sistema Aldeia
+    </h1>
+
+    <p>
+        Configuração dos Períodos de Avaliação
+    </p>
+
+</header>
+
+
+
+<!-- ==========================================
+     CONTEÚDO
+========================================== -->
+
+<main class="container">
+
+
+    <h2>
+        📅 Períodos das Avaliações
+    </h2>
+
+
+    <div class="aviso-acesso">
+
+        <strong>
+            👑 Área do Administrador
+        </strong>
+
+        <p>
+            Somente o Administrador pode criar,
+            alterar ou excluir os períodos das avaliações.
+        </p>
+
+    </div>
+
+
+    <p>
+
+        Configure individualmente quando cada avaliação
+        poderá ser realizada.
+
+    </p>
+
+
+
+    <!-- =====================================
+         AVALIAÇÃO 1
+    ====================================== -->
+
+    <div class="card periodo-card">
+
+
+        <h3>
+            📝 Avaliação 1
+        </h3>
+
+
+        <p>
+            Defina o período em que a primeira avaliação
+            estará disponível.
+        </p>
+
+
+
+        <div class="campos-periodo">
+
+
+            <div>
+
+                <label for="inicio1">
+                    Data de início
+                </label>
+
+
+                <input
+                    type="date"
+                    id="inicio1"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label for="fim1">
+                    Data de término
+                </label>
+
+
+                <input
+                    type="date"
+                    id="fim1"
+                >
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="botoes-periodo">
+
+
+            <button
+                type="button"
+                class="btn-salvar"
+                onclick="salvarPeriodo(1)"
+            >
+
+                💾 Salvar Avaliação 1
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="btn-excluir"
+                onclick="excluirPeriodo(1)"
+            >
+
+                🗑️ Excluir
+
+            </button>
+
+
+        </div>
+
+
+
+        <div
+            id="status1"
+            class="status-avaliacao"
+        >
+
+            Nenhum período configurado.
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         AVALIAÇÃO 2
+    ====================================== -->
+
+    <div class="card periodo-card">
+
+
+        <h3>
+            📝 Avaliação 2
+        </h3>
+
+
+        <p>
+            Defina o período em que a segunda avaliação
+            estará disponível.
+        </p>
+
+
+
+        <div class="campos-periodo">
+
+
+            <div>
+
+                <label for="inicio2">
+                    Data de início
+                </label>
+
+
+                <input
+                    type="date"
+                    id="inicio2"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label for="fim2">
+                    Data de término
+                </label>
+
+
+                <input
+                    type="date"
+                    id="fim2"
+                >
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="botoes-periodo">
+
+
+            <button
+                type="button"
+                class="btn-salvar"
+                onclick="salvarPeriodo(2)"
+            >
+
+                💾 Salvar Avaliação 2
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="btn-excluir"
+                onclick="excluirPeriodo(2)"
+            >
+
+                🗑️ Excluir
+
+            </button>
+
+
+        </div>
+
+
+
+        <div
+            id="status2"
+            class="status-avaliacao"
+        >
+
+            Nenhum período configurado.
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================
+         AVALIAÇÃO 3
+    ====================================== -->
+
+    <div class="card periodo-card">
+
+
+        <h3>
+            📝 Avaliação 3
+        </h3>
+
+
+        <p>
+            Defina o período em que a terceira avaliação
+            estará disponível.
+        </p>
+
+
+
+        <div class="campos-periodo">
+
+
+            <div>
+
+                <label for="inicio3">
+                    Data de início
+                </label>
+
+
+                <input
+                    type="date"
+                    id="inicio3"
+                >
+
+            </div>
+
+
+
+            <div>
+
+                <label for="fim3">
+                    Data de término
+                </label>
+
+
+                <input
+                    type="date"
+                    id="fim3"
+                >
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="botoes-periodo">
+
+
+            <button
+                type="button"
+                class="btn-salvar"
+                onclick="salvarPeriodo(3)"
+            >
+
+                💾 Salvar Avaliação 3
+
+            </button>
+
+
+
+            <button
+                type="button"
+                class="btn-excluir"
+                onclick="excluirPeriodo(3)"
+            >
+
+                🗑️ Excluir
+
+            </button>
+
+
+        </div>
+
+
+
+        <div
+            id="status3"
+            class="status-avaliacao"
+        >
+
+            Nenhum período configurado.
+
+        </div>
+
+
+    </div>
+
+
+
+    <br>
+
+
+
+    <!-- =====================================
+         VOLTAR
+    ====================================== -->
+
+    <button
+        type="button"
+        onclick="window.location.href='avaliacoes.html'"
+    >
+
+        🔙 Voltar para Avaliações
+
+    </button>
+
+
+</main>
+
+
+
+<!-- ==========================================
+     JAVASCRIPT DOS PERÍODOS
+========================================== -->
+
+<script src="periodo.js"></script>
+
+
+</body>
+<script>
+
+    const usuarioLogado =
+        localStorage.getItem(
+            "usuarioLogado"
+        );
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem(
+                "dadosUsuario"
+            )
+        );
+
+    // NÃO ESTÁ LOGADO
+
+    if (!usuarioLogado) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+    // SOMENTE ADMINISTRADOR
+
+    if (
+        !dadosUsuario ||
+        dadosUsuario.tipo !==
+        "administrador"
+    ) {
+
+        alert(
+            "⛔ Somente administradores podem acessar os períodos das avaliações."
+        );
+
+        window.location.replace(
+            "avaliacoes.html"
+        );
+
+    }
+
+</script>
+
+</html>

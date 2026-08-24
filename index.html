@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Aldeia do Futuro | Indicadores de Transformação</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ==========================================
+         PROTEÇÃO DE ACESSO
+         ========================================== -->
+
+    <script>
+
+        const usuarioLogado =
+            localStorage.getItem("usuarioLogado");
+
+        const dadosUsuarioInicial =
+            JSON.parse(
+                localStorage.getItem("dadosUsuario")
+            );
+
+
+        if (
+            !usuarioLogado ||
+            !dadosUsuarioInicial
+        ) {
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+    </script>
+
+
+
+    <!-- ==========================================
+         CABEÇALHO
+         ========================================== -->
+
+    <header class="topo">
+
+
+        <div class="topo-conteudo">
+
+
+            <div class="marca">
+
+
+                <!-- LOGO -->
+
+                <div class="logo-area">
+
+                    <img
+                        src="img/logo-adf-fundo-preto.png"
+                        alt="Logo Aldeia do Futuro"
+                        class="logo"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ======================================
+             ÁREA DO USUÁRIO
+             ====================================== -->
+
+        <div class="area-usuario">
+
+
+            <div class="usuario-logado">
+
+
+                <span>
+                    👤
+                </span>
+
+
+                <div>
+
+                    <small>
+                        Usuário
+                    </small>
+
+
+                    <strong id="nomeUsuario">
+                        Carregando...
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- BOTÃO SAIR -->
+
+            <button
+                type="button"
+                class="btn-sair"
+                onclick="sairDoSistema()"
+            >
+
+                🚪 Sair
+
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+
+
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL
+         ========================================== -->
+
+    <main class="container">
+
+
+
+        <!-- ======================================
+             ÁREA DE BOAS-VINDAS
+             ====================================== -->
+
+        <section class="boas-vindas">
+
+
+            <!-- DECORAÇÕES -->
+
+            <div class="hero-forma hero-forma-1"></div>
+
+            <div class="hero-forma hero-forma-2"></div>
+
+            <div class="hero-forma hero-forma-3"></div>
+
+
+
+            <!-- TEXTO -->
+
+            <div class="boas-vindas-conteudo">
+
+
+                <h2>
+
+                    Bem-vindo à
+
+                    <strong>
+                        Aldeia do Futuro
+                    </strong>
+
+                </h2>
+
+
+                <p id="mensagemPerfil">
+                    Acesso ao Sistema de Gestão
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ======================================
+             TÍTULO DO MENU
+             ====================================== -->
+
+        <div class="titulo-menu">
+
+
+            <div>
+
+
+                <span>
+                    ACESSO RÁPIDO
+                </span>
+
+
+                <h2>
+                    Menu Principal
+                </h2>
+
+
+            </div>
+
+
+            <p id="descricaoMenu">
+
+                Selecione uma área para continuar
+
+            </p>
+
+
+        </div>
+
+
+
+
+        <!-- ======================================
+             MENU PRINCIPAL
+             ====================================== -->
+
+        <div
+            class="menu"
+            id="menuPrincipal"
+        >
+
+
+
+            <!-- ==================================
+                 GRUPOS
+                 SOMENTE ADMINISTRADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card somente-admin"
+                onclick="window.location.href='grupos.html'"
+            >
+
+
+                <div class="icone grupos">
+                    👥
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Grupos
+                    </h3>
+
+
+                    <p>
+                        Gerencie os grupos cadastrados.
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+
+
+            <!-- ==================================
+                 ALUNOS
+                 SOMENTE ADMINISTRADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card somente-admin"
+                onclick="window.location.href='alunos.html'"
+            >
+
+
+                <div class="icone alunos">
+                    🎓
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Alunos
+                    </h3>
+
+
+                    <p>
+                        Consulte e gerencie os alunos.
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+
+
+            <!-- ==================================
+                 OFICINAS
+                 SOMENTE ADMINISTRADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card somente-admin"
+                onclick="window.location.href='oficinas.html'"
+            >
+
+
+                <div class="icone oficinas">
+                    🛠️
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Oficinas
+                    </h3>
+
+
+                    <p>
+                        Organize as oficinas e atividades.
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+
+
+            <!-- ==================================
+                 AVALIAÇÕES
+                 ADMINISTRADOR + EDUCADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card destaque"
+                onclick="window.location.href='avaliacoes.html'"
+            >
+
+
+                <div class="icone avaliacoes">
+                    📊
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Avaliações
+                    </h3>
+
+
+                    <p id="textoAvaliacoes">
+
+                        Registre e acompanhe
+                        as avaliações.
+
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+
+
+            <!-- ==================================
+                 RESULTADOS
+                 SOMENTE ADMINISTRADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card somente-admin"
+                onclick="window.location.href='resultado-grupos.html'"
+            >
+
+
+                <div class="icone resultados">
+                    📈
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Resultados
+                    </h3>
+
+
+                    <p>
+                        Visualize os resultados dos grupos.
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+
+
+            <!-- ==================================
+                 PROFESSORES
+                 SOMENTE ADMINISTRADOR
+                 ================================== -->
+
+            <button
+                type="button"
+                class="menu-card somente-admin"
+                onclick="window.location.href='professores.html'"
+            >
+
+
+                <div class="icone professores">
+                    👨‍🏫
+                </div>
+
+
+                <div class="menu-card-texto">
+
+
+                    <h3>
+                        Professores
+                    </h3>
+
+
+                    <p>
+                        Gerencie os professores cadastrados.
+                    </p>
+
+
+                </div>
+
+
+                <span class="seta">
+                    →
+                </span>
+
+
+            </button>
+
+
+        </div>
+
+
+
+
+        <!-- ======================================
+             INFORMATIVO
+             ====================================== -->
+
+        <section class="informativo">
+
+
+            <div class="informativo-icone">
+                ✨
+            </div>
+
+
+            <div>
+
+
+                <strong>
+                    Transformando dados em oportunidades
+                </strong>
+
+
+                <p id="textoInformativo">
+
+                    Acompanhe os indicadores e fortaleça
+                    o desenvolvimento de cada participante.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <!-- ==========================================
+         RODAPÉ
+         ========================================== -->
+
+    <footer>
+
+
+        <p>
+
+            <strong>
+                Aldeia do Futuro
+            </strong>
+
+            · Indicadores de Transformação
+
+        </p>
+
+
+        <span>
+            Sistema de Gestão
+        </span>
+
+
+    </footer>
+
+
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+         ========================================== -->
+
+    <script>
+
+
+        // ==========================================
+        // DADOS DO USUÁRIO
+        // ==========================================
+
+        const dadosUsuario =
+            JSON.parse(
+                localStorage.getItem(
+                    "dadosUsuario"
+                )
+            );
+
+
+
+        // ==========================================
+        // ELEMENTOS
+        // ==========================================
+
+        const nomeUsuario =
+            document.getElementById(
+                "nomeUsuario"
+            );
+
+
+        const mensagemPerfil =
+            document.getElementById(
+                "mensagemPerfil"
+            );
+
+
+        const descricaoMenu =
+            document.getElementById(
+                "descricaoMenu"
+            );
+
+
+        const textoAvaliacoes =
+            document.getElementById(
+                "textoAvaliacoes"
+            );
+
+
+        const textoInformativo =
+            document.getElementById(
+                "textoInformativo"
+            );
+
+
+        const botoesSomenteAdmin =
+            document.querySelectorAll(
+                ".somente-admin"
+            );
+
+
+
+        // ==========================================
+        // VERIFICAR DADOS DO USUÁRIO
+        // ==========================================
+
+        if (!dadosUsuario) {
+
+            localStorage.removeItem(
+                "usuarioLogado"
+            );
+
+            localStorage.removeItem(
+                "dadosUsuario"
+            );
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+
+
+        // ==========================================
+        // MOSTRAR NOME DO USUÁRIO
+        // ==========================================
+
+        if (
+            dadosUsuario &&
+            dadosUsuario.nome &&
+            nomeUsuario
+        ) {
+
+            nomeUsuario.textContent =
+                dadosUsuario.nome;
+
+        }
+
+
+
+        // ==========================================
+        // ADMINISTRADOR
+        // ==========================================
+
+        if (
+            dadosUsuario &&
+            dadosUsuario.tipo ===
+            "administrador"
+        ) {
+
+
+            // Mostrar todos os menus
+
+            botoesSomenteAdmin.forEach(
+                function(botao) {
+
+                    botao.style.display =
+                        "flex";
+
+                }
+            );
+
+
+            // Mensagem
+
+            if (mensagemPerfil) {
+
+                mensagemPerfil.textContent =
+                    "Acesso de Administrador";
+
+            }
+
+
+            // Descrição
+
+            if (descricaoMenu) {
+
+                descricaoMenu.textContent =
+                    "Acesso completo ao sistema";
+
+            }
+
+
+            // Avaliações
+
+            if (textoAvaliacoes) {
+
+                textoAvaliacoes.textContent =
+                    "Registre e acompanhe as avaliações.";
+
+            }
+
+
+            // Informativo
+
+            if (textoInformativo) {
+
+                textoInformativo.textContent =
+                    "Gerencie grupos, alunos, oficinas, professores, avaliações e resultados.";
+
+            }
+
+        }
+
+
+
+        // ==========================================
+        // EDUCADOR
+        // ==========================================
+
+        else if (
+            dadosUsuario &&
+            dadosUsuario.tipo ===
+            "educador"
+        ) {
+
+
+            // ======================================
+            // ESCONDER MENUS ADMINISTRATIVOS
+            // ======================================
+
+            botoesSomenteAdmin.forEach(
+                function(botao) {
+
+                    botao.style.display =
+                        "none";
+
+                }
+            );
+
+
+            // ======================================
+            // MENSAGEM
+            // ======================================
+
+            if (mensagemPerfil) {
+
+                mensagemPerfil.textContent =
+                    "Acesso de Educador";
+
+            }
+
+
+            // ======================================
+            // DESCRIÇÃO
+            // ======================================
+
+            if (descricaoMenu) {
+
+                descricaoMenu.textContent =
+                    "Área disponível para avaliação dos alunos";
+
+            }
+
+
+            // ======================================
+            // TEXTO AVALIAÇÕES
+            // ======================================
+
+            if (textoAvaliacoes) {
+
+                textoAvaliacoes.textContent =
+                    "Realize avaliações e consulte o histórico dos alunos.";
+
+            }
+
+
+            // ======================================
+            // INFORMATIVO
+            // ======================================
+
+            if (textoInformativo) {
+
+                textoInformativo.textContent =
+                    "Como educador, você possui acesso à área de avaliações dos alunos.";
+
+            }
+
+        }
+
+
+
+        // ==========================================
+        // TIPO DE USUÁRIO INVÁLIDO
+        // ==========================================
+
+        else {
+
+            localStorage.removeItem(
+                "usuarioLogado"
+            );
+
+            localStorage.removeItem(
+                "dadosUsuario"
+            );
+
+            alert(
+                "⛔ Tipo de usuário não autorizado."
+            );
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+
+
+        // ==========================================
+        // SAIR DO SISTEMA
+        // ==========================================
+
+        function sairDoSistema() {
+
+
+            const confirmar =
+                confirm(
+                    "Deseja realmente sair do sistema?"
+                );
+
+
+            if (!confirmar) {
+
+                return;
+
+            }
+
+
+            // Apagar login
+
+            localStorage.removeItem(
+                "usuarioLogado"
+            );
+
+
+            localStorage.removeItem(
+                "dadosUsuario"
+            );
+
+
+            // Voltar para login
+
+            window.location.replace(
+                "login.html"
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html> 

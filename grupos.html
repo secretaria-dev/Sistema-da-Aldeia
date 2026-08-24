@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Grupos - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <header>
+
+        <h1>
+            Sistema Aldeia
+        </h1>
+
+        <p>
+            Gestão de Grupos
+        </p>
+
+    </header>
+
+
+    <main class="container">
+
+
+        <h2>
+            Grupos
+        </h2>
+
+
+        <div class="menu">
+
+
+            <button
+                onclick="window.location.href='novo-grupo.html'"
+            >
+                ➕ Cadastrar Novo Grupo
+            </button>
+
+
+            <button
+                onclick="window.location.href='lista-grupos.html'"
+            >
+                📋 Ver Grupos Cadastrados
+            </button>
+
+
+            <button
+                onclick="window.location.href='index.html'"
+            >
+                🔙 Voltar ao Menu
+            </button>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+<script>
+
+    // ==========================================
+    // PROTEÇÃO - SOMENTE ADMINISTRADOR
+    // ==========================================
+
+    const usuarioLogado =
+        localStorage.getItem("usuarioLogado");
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem("dadosUsuario")
+        );
+
+
+    // ==========================================
+    // NÃO ESTÁ LOGADO
+    // ==========================================
+
+    if (!usuarioLogado || !dadosUsuario) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+
+    // ==========================================
+    // NÃO É ADMINISTRADOR
+    // ==========================================
+
+    if (
+        dadosUsuario &&
+        dadosUsuario.tipo !== "administrador"
+    ) {
+
+        alert(
+            "🔒 Acesso restrito!\n\nEsta área é exclusiva para administradores."
+        );
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }
+
+</script>
+
+</html>

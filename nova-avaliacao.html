@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Nova Avaliação - Sistema Aldeia</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <style>
+
+        .opcoes-avaliacao {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn-avaliacao {
+            flex: 1;
+            min-width: 180px;
+            padding: 18px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.2s;
+            color: #222;
+        }
+
+        .btn-avaliacao:hover:not(:disabled) {
+            border-color: #2e7d32;
+            transform: translateY(-2px);
+        }
+
+        .btn-avaliacao.selecionada {
+            background: #2e7d32;
+            color: white !important;
+            border-color: #2e7d32;
+        }
+
+        .btn-avaliacao.selecionada span {
+            color: white !important;
+        }
+
+        .btn-avaliacao:disabled {
+            background: #f1f1f1;
+            color: #555 !important;
+            border-color: #ddd;
+            cursor: not-allowed;
+            opacity: 1;
+        }
+
+        .titulo-avaliacao {
+            display: block;
+            font-size: 17px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .data-avaliacao {
+            display: block;
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: normal;
+        }
+
+        .status-avaliacao {
+            display: block;
+            margin-top: 6px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .data-avaliacao.aberta,
+        .status-avaliacao.disponivel {
+            color: #2e7d32;
+        }
+
+        .data-avaliacao.fechada,
+        .status-avaliacao.bloqueada {
+            color: #666;
+        }
+
+        #mensagemAvaliacao {
+            padding: 12px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        #areaIndicadores {
+            margin-top: 20px;
+        }
+
+        #indicadores {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        #indicadores .card {
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        #indicadores label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #indicadores select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .botoes-finalizacao {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-revisar,
+        .btn-realizado {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .btn-revisar {
+            background: #e0e0e0;
+            color: #222;
+        }
+
+        .btn-realizado {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .modal-revisao {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.55);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .conteudo-revisao {
+            background: white;
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+        }
+
+        .conteudo-revisao h2 {
+            margin-top: 0;
+        }
+
+        .item-revisao {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+
+        .botoes-revisao {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-voltar-revisao,
+        .btn-confirmar-revisao {
+            padding: 13px 20px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-voltar-revisao {
+            background: #e0e0e0;
+        }
+
+        .btn-confirmar-revisao {
+            background: #2e7d32;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            .opcoes-avaliacao {
+                flex-direction: column;
+            }
+
+            .btn-avaliacao {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        Sistema Aldeia
+    </h1>
+
+    <p>
+        Indicadores de Transformação
+    </p>
+
+</header>
+
+
+<main class="container">
+
+    <h2>
+        Nova Avaliação
+    </h2>
+
+
+    <form id="formAvaliacao">
+
+
+        <!-- GRUPO -->
+
+        <label for="grupo">
+            Grupo
+        </label>
+
+        <select
+            id="grupo"
+            required
+        >
+
+            <option value="">
+                Selecione um grupo
+            </option>
+
+        </select>
+
+
+        <!-- OFICINA -->
+
+        <label for="oficina">
+            Oficina
+        </label>
+
+        <select
+            id="oficina"
+            required
+        >
+
+            <option value="">
+                Selecione uma oficina
+            </option>
+
+        </select>
+
+
+        <!-- ALUNO -->
+
+        <label for="aluno">
+            Aluno
+        </label>
+
+        <select
+            id="aluno"
+            required
+        >
+
+            <option value="">
+                Selecione um aluno
+            </option>
+
+        </select>
+
+
+        <hr>
+
+
+        <!-- ESCOLHER AVALIAÇÃO -->
+
+        <h3>
+            Escolha a avaliação
+        </h3>
+
+        <p>
+            O aluno deverá realizar cada avaliação uma única vez.
+        </p>
+
+
+        <div class="opcoes-avaliacao">
+
+
+            <!-- AVALIAÇÃO 1 -->
+
+            <button
+                type="button"
+                class="btn-avaliacao"
+                id="btnAvaliacao1"
+                onclick="selecionarAvaliacao(1)"
+            >
+
+                <span
+                    id="tituloAvaliacao1"
+                    class="titulo-avaliacao"
+                >
+                    🔒 Avaliação 1
+                </span>
+
+                <span
+                    id="dataAvaliacao1"
+                    class="data-avaliacao fechada"
+                >
+                    Data não configurada
+                </span>
+
+                <span
+                    id="statusAvaliacao1"
+                    class="status-avaliacao bloqueada"
+                >
+                    🔒 Bloqueada
+                </span>
+
+            </button>
+
+
+            <!-- AVALIAÇÃO 2 -->
+
+            <button
+                type="button"
+                class="btn-avaliacao"
+                id="btnAvaliacao2"
+                onclick="selecionarAvaliacao(2)"
+            >
+
+                <span
+                    id="tituloAvaliacao2"
+                    class="titulo-avaliacao"
+                >
+                    🔒 Avaliação 2
+                </span>
+
+                <span
+                    id="dataAvaliacao2"
+                    class="data-avaliacao fechada"
+                >
+                    Data não configurada
+                </span>
+
+                <span
+                    id="statusAvaliacao2"
+                    class="status-avaliacao bloqueada"
+                >
+                    🔒 Bloqueada
+                </span>
+
+            </button>
+
+
+            <!-- AVALIAÇÃO 3 -->
+
+            <button
+                type="button"
+                class="btn-avaliacao"
+                id="btnAvaliacao3"
+                onclick="selecionarAvaliacao(3)"
+            >
+
+                <span
+                    id="tituloAvaliacao3"
+                    class="titulo-avaliacao"
+                >
+                    🔒 Avaliação 3
+                </span>
+
+                <span
+                    id="dataAvaliacao3"
+                    class="data-avaliacao fechada"
+                >
+                    Data não configurada
+                </span>
+
+                <span
+                    id="statusAvaliacao3"
+                    class="status-avaliacao bloqueada"
+                >
+                    🔒 Bloqueada
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <input
+            type="hidden"
+            id="numeroAvaliacao"
+            value=""
+        >
+
+
+        <div
+            id="mensagemAvaliacao"
+            style="display:none;"
+        ></div>
+
+
+        <br>
+
+
+        <!-- INDICADORES -->
+
+        <div
+            id="areaIndicadores"
+            style="display:none;"
+        >
+
+            <h3>
+                Indicadores de Transformação
+            </h3>
+
+            <p>
+                Responda todos os indicadores.
+            </p>
+
+            <div id="indicadores"></div>
+
+
+            <div class="botoes-finalizacao">
+
+                <button
+                    type="button"
+                    class="btn-revisar"
+                    onclick="abrirRevisao()"
+                >
+                    🔍 Revisar
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn-realizado"
+                    onclick="abrirRevisao()"
+                >
+                    ✅ Realizado
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            type="button"
+            onclick="window.location.href='avaliacoes.html'"
+        >
+            🔙 Voltar
+        </button>
+
+
+    </form>
+
+</main>
+
+
+<!-- MODAL DE REVISÃO -->
+
+<div
+    id="modalRevisao"
+    class="modal-revisao"
+>
+
+    <div class="conteudo-revisao">
+
+        <h2>
+            🔍 Revisar Avaliação
+        </h2>
+
+        <p>
+            Confira todas as informações antes de realizar a avaliação.
+        </p>
+
+        <hr>
+
+        <div id="dadosRevisao"></div>
+
+        <div class="botoes-revisao">
+
+            <button
+                type="button"
+                class="btn-voltar-revisao"
+                onclick="fecharRevisao()"
+            >
+                ✏️ Voltar e corrigir
+            </button>
+
+            <button
+                type="button"
+                class="btn-confirmar-revisao"
+                onclick="confirmarRevisao()"
+            >
+                ✅ Confirmar e Realizar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script src="avaliacoes.js"></script>
+
+
+<script>
+
+function abrirRevisao() {
+
+    const grupo =
+        document.getElementById("grupo").value;
+
+    const oficina =
+        document.getElementById("oficina").value;
+
+    const aluno =
+        document.getElementById("aluno").value;
+
+    const momento =
+        document.getElementById("numeroAvaliacao").value;
+
+
+    if (!grupo || !oficina || !aluno || !momento) {
+
+        alert(
+            "⚠️ Preencha Grupo, Oficina, Aluno e escolha a avaliação."
+        );
+
+        return;
+
+    }
+
+
+    const selects =
+        document.querySelectorAll(
+            "#indicadores select"
+        );
+
+
+    if (selects.length === 0) {
+
+        alert(
+            "⚠️ Os indicadores ainda não foram carregados."
+        );
+
+        return;
+
+    }
+
+
+    let todosPreenchidos = true;
+
+
+    selects.forEach(select => {
+
+        if (!select.value) {
+
+            todosPreenchidos = false;
+
+            select.style.border =
+                "2px solid #c62828";
+
+        } else {
+
+            select.style.border = "";
+
+        }
+
+    });
+
+
+    if (!todosPreenchidos) {
+
+        alert(
+            "⚠️ Responda todos os indicadores antes de revisar."
+        );
+
+        return;
+
+    }
+
+
+    let soma = 0;
+
+
+    selects.forEach(select => {
+
+        soma += Number(select.value);
+
+    });
+
+
+    const media =
+        soma / selects.length;
+
+    const resultado =
+        media * 10;
+
+
+    let html = `
+
+        <div class="item-revisao">
+            <strong>👥 Grupo:</strong>
+            ${grupo}
+        </div>
+
+        <div class="item-revisao">
+            <strong>🏫 Oficina:</strong>
+            ${oficina}
+        </div>
+
+        <div class="item-revisao">
+            <strong>👨‍🎓 Aluno:</strong>
+            ${aluno}
+        </div>
+
+        <div class="item-revisao">
+            <strong>📝 Avaliação:</strong>
+            Avaliação ${momento}
+        </div>
+
+        <hr>
+
+        <h3>
+            Indicadores
+        </h3>
+
+    `;
+
+
+    selects.forEach(select => {
+
+        const nome =
+            select.name;
+
+        const resposta =
+            select.options[
+                select.selectedIndex
+            ].text;
+
+
+        html += `
+
+            <div class="item-revisao">
+
+                <strong>
+                    ${nome}:
+                </strong>
+
+                ${resposta}
+
+            </div>
+
+        `;
+
+    });
+
+
+    html += `
+
+        <hr>
+
+        <div class="item-revisao">
+
+            <strong>
+                📊 Média:
+            </strong>
+
+            ${media.toFixed(1)}
+
+        </div>
+
+        <div class="item-revisao">
+
+            <strong>
+                🎯 Resultado:
+            </strong>
+
+            ${resultado.toFixed(0)}%
+
+        </div>
+
+    `;
+
+
+    document.getElementById(
+        "dadosRevisao"
+    ).innerHTML = html;
+
+
+    document.getElementById(
+        "modalRevisao"
+    ).style.display = "block";
+
+}
+
+
+function fecharRevisao() {
+
+    document.getElementById(
+        "modalRevisao"
+    ).style.display = "none";
+
+}
+
+
+function confirmarRevisao() {
+
+    const momento =
+        document.getElementById(
+            "numeroAvaliacao"
+        ).value;
+
+
+    if (!momento) {
+
+        alert(
+            "⚠️ Escolha uma avaliação."
+        );
+
+        return;
+
+    }
+
+
+    fecharRevisao();
+
+    document
+        .getElementById("formAvaliacao")
+        .requestSubmit();
+
+}
+
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "modalRevisao"
+            );
+
+        if (event.target === modal) {
+
+            fecharRevisao();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+<!-- ==========================================
+     PROTEÇÃO DE ACESSO
+========================================== -->
+
+<script>
+
+    const usuarioLogado =
+        localStorage.getItem(
+            "usuarioLogado"
+        );
+
+    const dadosUsuario =
+        JSON.parse(
+            localStorage.getItem(
+                "dadosUsuario"
+            )
+        );
+
+    // NÃO ESTÁ LOGADO
+
+    if (!usuarioLogado) {
+
+        window.location.replace(
+            "login.html"
+        );
+
+    }
+
+    // VERIFICA PERFIL
+
+    if (
+        dadosUsuario &&
+        dadosUsuario.tipo
+    ) {
+
+        const permitido =
+
+            dadosUsuario.tipo ===
+                "administrador"
+
+            ||
+
+            dadosUsuario.tipo ===
+                "educador";
+
+        if (!permitido) {
+
+            alert(
+                "⛔ Você não possui permissão para acessar esta página."
+            );
+
+            window.location.replace(
+                "index.html"
+            );
+
+        }
+
+    }
+
+</script>
+
+</html>
